@@ -1,5 +1,7 @@
 # CodeU Example Project
 
+This is the Readme for the Team 9 repo
+
 This is an example chat application. It's complete and functional, but leaves
 plenty of room for improvement.
 
