@@ -41,8 +41,8 @@
 		<li>Liz</li>
 		<li>Sergio</li>
 		<li>Alethea</li>
-		<liz>Erin</liz>
-		
+		<li>Erin</li>
+
 	</ul>
       <h1>About the CodeU Chat App</h1>
       <p>
