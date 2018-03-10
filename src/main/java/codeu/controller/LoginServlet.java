@@ -91,6 +91,11 @@ public class LoginServlet extends HttpServlet {
      request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
    }
 
+   // if (!userStore.isUserRegistered(username)) {
+   //   User user = new User(UUID.randomUUID(), username, Instant.now());
+   //   userStore.addUser(user);
+   // }
+
   }
 
 }
