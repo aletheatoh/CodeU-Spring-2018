@@ -19,6 +19,7 @@ import codeu.model.store.basic.UserStore;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.UUID;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /** Servlet class responsible for the login page. */
 public class LoginServlet extends HttpServlet {
+
+  private static final Logger LOG = Logger.getLogger("ServerStartupListener");
 
   /** Store class that gives access to Users. */
   private UserStore userStore;
@@ -38,6 +41,7 @@ public class LoginServlet extends HttpServlet {
   public void init() throws ServletException {
     super.init();
     setUserStore(UserStore.getInstance());
+    LOG.info("servletInfo: " + super.getServletInfo());
   }
 
   /**
@@ -66,6 +70,7 @@ public class LoginServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     String username = request.getParameter("username");
+    LOG.info("logging in username=" + username);
 
     if (!username.matches("[\\w*\\s*]*")) {
       request.setAttribute("error", "Please enter only letters, numbers, and spaces.");

@@ -9,6 +9,7 @@ import codeu.model.store.basic.UserStore;
 import codeu.model.store.persistence.PersistentDataStoreException;
 import codeu.model.store.persistence.PersistentStorageAgent;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -18,18 +19,23 @@ import javax.servlet.ServletContextListener;
  */
 public class ServerStartupListener implements ServletContextListener {
 
+  private static final Logger LOG = Logger.getLogger("ServerStartupListener");
+
   /** Loads data from Datastore. */
   @Override
   public void contextInitialized(ServletContextEvent sce) {
     try {
       List<User> users = PersistentStorageAgent.getInstance().loadUsers();
       UserStore.getInstance().setUsers(users);
+      LOG.info(String.format(">>>> Loaded %d users", users.size()));
 
       List<Conversation> conversations = PersistentStorageAgent.getInstance().loadConversations();
       ConversationStore.getInstance().setConversations(conversations);
+      LOG.info(String.format(">>>> Loaded %d conversations", conversations.size()));
 
       List<Message> messages = PersistentStorageAgent.getInstance().loadMessages();
       MessageStore.getInstance().setMessages(messages);
+      LOG.info(String.format(">>>> Loaded %d messages", conversations.size()));
 
     } catch (PersistentDataStoreException e) {
       System.err.println("Server didn't start correctly. An error occurred during Datastore load!");
