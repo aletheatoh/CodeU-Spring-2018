@@ -41,7 +41,8 @@
       <h2>Welcome!</h2>
       <h2>Say hi to our 5 incredibly awesome creators:</h2>
 	<ul>
-		<li>Henry</li>
+		<li>Henry: Keeping his day job for now. <i>Carnegie Hall will have to wait.</i></li>
+    <img src="<%=request.getContextPath()%>/images/playing-piano-in-a-band.jpg" alt="The Pulpit Rock" width="300" height="200">
 		<li>Liz: an artistic computer scientist fueled by coffee :></li>
 		<li>Erin</li>
 		<li>Sergio</li>
