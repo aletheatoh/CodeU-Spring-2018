@@ -48,7 +48,6 @@
 		<li>Erin</li>
 		<li>Sergio: loves making pizza</li>
 		<li>Alethea: a big dreamer and a low-key belieber.</li>
->>>>>>> 762bda17bc2755564e537f06af160ee78de67ced
 	</ul>
       <ul>
         <li><a href="/login">Login</a> to get started.</li>
