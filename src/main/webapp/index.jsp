@@ -48,6 +48,9 @@
             project.</li>
         <li>You can <a href="/testdata">load test data</a> to fill the site with
             example data.</li>
+
+        <li>I am Sergio from Ecuador and I'm known around the world as the best pizza 
+            maker of all time.<li>
       </ul>
     </div>
   </div>
