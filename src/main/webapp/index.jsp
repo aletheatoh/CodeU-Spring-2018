@@ -28,6 +28,7 @@
       <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
     <% } else{ %>
       <a href="/login">Login</a>
+      <a href="/register">Register</a>
     <% } %>
     <a href="/about.jsp">About</a>
     <a href="/testdata">Load Test Data</a>
@@ -45,8 +46,9 @@
     <img src="<%=request.getContextPath()%>/images/playing-piano-in-a-band.jpg" alt="The Pulpit Rock" width="300" height="200">
 		<li>Liz: an artistic computer scientist fueled by coffee :></li>
 		<li>Erin</li>
-		<li>Sergio: loves making and eating pizza</li>
-		<li>Alethea</li>
+		<li>Sergio: loves making pizza</li>
+		<li>Alethea: a big dreamer and a low-key belieber.</li>
+>>>>>>> 762bda17bc2755564e537f06af160ee78de67ced
 	</ul>
       <ul>
         <li><a href="/login">Login</a> to get started.</li>
