@@ -47,7 +47,7 @@
 		<li>Liz: an artistic computer scientist fueled by coffee :></li>
 		<li>Erin</li>
 		<li>Sergio</li>
-		<li>Alethea</li>
+		<li>Alethea: a big dreamer and a low-key belieber.</li>
 	</ul>
       <ul>
         <li><a href="/login">Login</a> to get started.</li>
