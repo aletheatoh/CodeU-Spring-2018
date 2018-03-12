@@ -45,7 +45,7 @@
     <img src="<%=request.getContextPath()%>/images/playing-piano-in-a-band.jpg" alt="The Pulpit Rock" width="300" height="200">
 		<li>Liz: an artistic computer scientist fueled by coffee :></li>
 		<li>Erin</li>
-		<li>Sergio</li>
+		<li>Sergio: loves making and eating pizza</li>
 		<li>Alethea</li>
 	</ul>
       <ul>
@@ -56,9 +56,6 @@
             project.</li>
         <li>You can <a href="/testdata">load test data</a> to fill the site with
             example data.</li>
-
-        <li>I am Sergio from Ecuador and I'm known around the world as the best pizza 
-            maker of all time.<li>
       </ul>
     </div>
   </div>
