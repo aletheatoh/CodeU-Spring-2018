@@ -46,7 +46,7 @@
     <img src="<%=request.getContextPath()%>/images/playing-piano-in-a-band.jpg" alt="The Pulpit Rock" width="300" height="200">
 		<li>Liz: an artistic computer scientist fueled by coffee :></li>
 		<li>Erin</li>
-		<li>Sergio</li>
+		<li>Sergio: loves making pizza</li>
 		<li>Alethea: a big dreamer and a low-key belieber.</li>
 	</ul>
       <ul>
