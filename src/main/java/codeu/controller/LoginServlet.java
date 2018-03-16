@@ -16,6 +16,8 @@ package codeu.controller;
 
 import codeu.model.data.User;
 import codeu.model.store.basic.UserStore;
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.io.IOException;
 import java.time.Instant;
 import java.util.UUID;
@@ -67,20 +69,17 @@ public class LoginServlet extends HttpServlet {
    * form data, checks that they're valid, and either adds the user to the session so we know the user is logged in or shows an error to the user.
    */
   @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws IOException, ServletException {
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
     String username = request.getParameter("username");
     LOG.info("logging in username=" + username);
     String password = request.getParameter("password");
 
-    // removed check for non-alpha numeric characters as it will be handled in RegisterServlet
-
     // user is registered
     if (userStore.isUserRegistered(username)) {
-     User user = userStore.getUser(username);
+      User user = userStore.getUser(username);
 
      // password is valid
-     if (password.equals(user.getPassword())) {
+     if (BCrypt.checkpw(password, user.getPassword())) {
        request.getSession().setAttribute("user", username);
        response.sendRedirect("/conversations");
      }
