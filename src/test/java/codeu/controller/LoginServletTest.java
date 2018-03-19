@@ -57,6 +57,10 @@ public class LoginServletTest {
   public void testDoPost_BadUsername() throws IOException, ServletException {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("bad !@#$% username");
 
+    UserStore mockUserStore = Mockito.mock(UserStore.class);
+    Mockito.when(mockUserStore.isUserRegistered("test username")).thenReturn(false);
+    loginServlet.setUserStore(mockUserStore);
+
     loginServlet.doPost(mockRequest, mockResponse);
 
     Mockito.verify(mockRequest)
@@ -65,7 +69,7 @@ public class LoginServletTest {
   }
 
   @Test
-  public void testDoPost_NewUser() throws IOException, ServletException {
+  public void testDoPost_UserNotFound() throws IOException, ServletException {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
 
     UserStore mockUserStore = Mockito.mock(UserStore.class);
@@ -77,13 +81,7 @@ public class LoginServletTest {
 
     loginServlet.doPost(mockRequest, mockResponse);
 
-    ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
-
-    Mockito.verify(mockUserStore).addUser(userArgumentCaptor.capture());
-    Assert.assertEquals(userArgumentCaptor.getValue().getName(), "test username");
-
-    Mockito.verify(mockSession).setAttribute("user", "test username");
-    Mockito.verify(mockResponse).sendRedirect("/conversations");
+    Mockito.verify(mockRequest).setAttribute("error", "That username was not found.");
   }
 
   @Test

@@ -73,6 +73,12 @@ public class LoginServlet extends HttpServlet {
     LOG.info("logging in username=" + username);
     String password = request.getParameter("password");
 
+    if (!username.matches("[\\w*\\s]*")) {
+      request.setAttribute("error", "Please enter only letters, numbers, and spaces.");
+      request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+      return;
+    }
+
     // removed check for non-alpha numeric characters as it will be handled in RegisterServlet
 
     // user is registered
