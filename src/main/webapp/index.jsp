@@ -45,7 +45,7 @@
 		<li>Henry: Keeping his day job for now. <i>Carnegie Hall will have to wait.</i></li>
     <img src="<%=request.getContextPath()%>/images/playing-piano-in-a-band.jpg" alt="The Pulpit Rock" width="300" height="200">
 		<li>Liz: an artistic computer scientist fueled by coffee :></li>
-		<li>Erin</li>
+		<li>Erin: lover of Java (coffee and language)</li>
 		<li>Sergio: loves making pizza</li>
 		<li>Alethea: a big dreamer and a low-key belieber.</li>
 	</ul>

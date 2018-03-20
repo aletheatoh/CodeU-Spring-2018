@@ -71,35 +71,22 @@ public class LoginServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
     String username = request.getParameter("username");
-    LOG.info("logging in username=" + username);
     String password = request.getParameter("password");
-
-    // user is registered
     if (userStore.isUserRegistered(username)) {
       User user = userStore.getUser(username);
-
-     // password is valid
-     if (BCrypt.checkpw(password, user.getPassword())) {
-       request.getSession().setAttribute("user", username);
-       response.sendRedirect("/conversations");
-     }
-     // password invalid - send error message
-     else {
-       request.setAttribute("error", "Invalid password.");
-       request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
-     }
-   }
-   // user is not registered - send error message
-   else {
-     request.setAttribute("error", "That username was not found.");
-     request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
-   }
-
-   // if (!userStore.isUserRegistered(username)) {
-   //   User user = new User(UUID.randomUUID(), username, Instant.now());
-   //   userStore.addUser(user);
-   // }
-
+      if(password.equals(user.getPassword())) {
+        request.getSession().setAttribute("user", username);
+        response.sendRedirect("/conversations");
+      }
+      else {
+        request.setAttribute("error", "Invalid password.");
+        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+      }
+    }
+    else {
+      request.setAttribute("error", "That username was not found.");
+      request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+    }
   }
 
 }
