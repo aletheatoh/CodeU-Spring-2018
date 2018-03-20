@@ -28,6 +28,7 @@ import javax.servlet.http.HttpSession;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mindrot.jbcrypt.BCrypt;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 
@@ -60,7 +61,8 @@ public class LoginServletTest {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
     Mockito.when(mockRequest.getParameter("password")).thenReturn("right password");
 
-    User mockUser = new User(UUID.randomUUID(), "test username", "right password", Instant.now());
+    String hashedPassword = BCrypt.hashpw("right password", BCrypt.gensalt());
+    User mockUser = new User(UUID.randomUUID(), "test username", hashedPassword, Instant.now());
 
     UserStore mockUserStore = Mockito.mock(UserStore.class);
     loginServlet.setUserStore(mockUserStore);
@@ -82,7 +84,8 @@ public class LoginServletTest {
     Mockito.when(mockRequest.getParameter("username")).thenReturn("test username");
     Mockito.when(mockRequest.getParameter("password")).thenReturn("wrong password");
 
-    User mockUser = new User(UUID.randomUUID(), "test username", "right password", Instant.now());
+    String hashedPassword = BCrypt.hashpw("right password", BCrypt.gensalt());
+    User mockUser = new User(UUID.randomUUID(), "test username", hashedPassword, Instant.now());
 
     UserStore mockUserStore = Mockito.mock(UserStore.class);
     loginServlet.setUserStore(mockUserStore);
