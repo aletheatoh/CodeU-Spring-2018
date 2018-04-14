@@ -26,7 +26,7 @@
 
   <nav>
     <a id="navTitle" href="/">CodeU Chat App</a>
-    <a href="/conversations">User Profile</a>
+    <a href="/conversations">Conversations</a>
     <% if(request.getSession().getAttribute("user") != null){ %>
       <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
     <% } else{ %>
@@ -56,7 +56,11 @@
       <hr/>
     <% } %>
 
-    <h1>Conversations</h1>
+    <% if(request.getSession().getAttribute("user") != null){ %>
+      <h1><%= request.getSession().getAttribute("user")%>'s Profile Page</a>
+    <% } else{ %>
+      <h1>You're not authorized to view this page</h1>
+    <% } %>
 
     <%
     List<Conversation> conversations =
