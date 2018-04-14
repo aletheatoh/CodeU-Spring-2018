@@ -37,7 +37,11 @@
      <br/>
      <label for="password">Password: </label>
      <input type="password" name="password" id="password">
-     <br/><br/>
+     <br/>
+     <label>Upload your profile picture</label><input type="file" name="profilePic" accept="image/*">
+     <br/>
+     <textarea type="text" name="aboutme"></textarea>
+     <br/>
      <button type="submit">Submit</button>
    </form>
  </div>

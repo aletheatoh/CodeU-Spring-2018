@@ -64,7 +64,7 @@
 
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
-    <url-pattern>/users</url-pattern>
+    <url-pattern>/users/*</url-pattern>
   </servlet-mapping>
 
   <servlet>

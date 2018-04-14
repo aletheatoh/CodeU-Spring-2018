@@ -24,6 +24,9 @@ public class User {
   private final Instant creation;
   private final String hashedPassword;
 
+  private final String aboutMe;
+  private final String profilePicture;
+
   /**
    * Constructs a new User.
    *
@@ -32,11 +35,14 @@ public class User {
    * @param password the password of this User
    * @param creation the creation time of this User
    */
-  public User(UUID id, String name, String password, Instant creation) {
+  public User(UUID id, String name, String password, Instant creation, String aboutMe, String profilePicture) {
     this.id = id;
     this.name = name;
     this.hashedPassword = password;
     this.creation = creation;
+
+    this.aboutMe = aboutMe;
+    this.profilePicture = profilePicture;
   }
 
   /** Returns the ID of this User. */
@@ -44,12 +50,11 @@ public class User {
     return id;
   }
 
-  
   /** Returns the username of this User. */
   public String getName() {
     return name;
   }
-  
+
   /**
    * Returns the password of this User.
    */
@@ -60,5 +65,10 @@ public class User {
   /** Returns the creation time of this User. */
   public Instant getCreationTime() {
     return creation;
+  }
+
+  /** Returns the about me of this User. */
+  public String getAboutMe() {
+    return aboutMe;
   }
 }

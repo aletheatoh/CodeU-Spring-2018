@@ -63,6 +63,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
       <h4>Edit your About Me (only you can see this)</h4>
       <form action="/users" method="POST">
           <div class="form-group">
+          <label>Upload your profile picture</label><input type="file" name="profilePic" accept="image/*">
           <textarea type="text" name="aboutme"></textarea>
         </div>
 

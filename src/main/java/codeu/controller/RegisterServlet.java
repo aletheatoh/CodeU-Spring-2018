@@ -32,6 +32,9 @@ public class RegisterServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+
+		String profilePic = request.getParameter("profilePic");
+		String aboutme = request.getParameter("aboutme");
 		String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
 
 		if (!username.matches("[\\w*\\s]*")) {
@@ -46,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
 			return;
 		}
 
-		User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now());
+		User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now(), aboutme, profilePic);
 		userStore.addUser(user);
 
 		response.sendRedirect("/login");
