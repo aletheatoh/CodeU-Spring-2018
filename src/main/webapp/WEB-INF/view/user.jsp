@@ -43,11 +43,20 @@
     <% } %>
 
     <% if(request.getSession().getAttribute("user") != null){ %>
-      <h1>New Conversation</h1>
-      <form action="/conversations" method="POST">
+
+      <%-- put user profile here --%>
+      <h1><%= request.getSession().getAttribute("user")%>'s Profile Page</h1>
+
+      <hr/>
+
+      <h3>About<%= request.getSession().getAttribute("user")%><h3>
+      <p>Hello there!</p>
+
+      <h5>Edit your About Me (only you can see this)</h5>
+      <form action="/users" method="POST">
           <div class="form-group">
             <label class="form-control-label">Title:</label>
-          <textarea type="text" name="conversationTitle"></textarea>
+          <textarea type="text" name="aboutme"></textarea>
         </div>
 
         <button type="submit">Create</button>
@@ -55,8 +64,7 @@
 
       <hr/>
 
-      <%-- put user profile here --%>
-      <h1><%= request.getSession().getAttribute("user")%>'s Profile Page</h1>
+      <h3><%= request.getSession().getAttribute("user")%>'s Sent Messages</h3>
 
     <% } %>
 
