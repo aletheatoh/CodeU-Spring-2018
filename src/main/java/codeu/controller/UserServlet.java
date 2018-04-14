@@ -38,6 +38,9 @@ public class UserServlet extends HttpServlet {
   /** Store class that gives access to Conversations. */
   private ConversationStore conversationStore;
 
+  /** Store class that gives access to Messages. */
+  private MessageStore messageStore;
+
   /**
    * Set up state for handling conversation-related requests. This method is only called when
    * running in a server, not when running in a test.
