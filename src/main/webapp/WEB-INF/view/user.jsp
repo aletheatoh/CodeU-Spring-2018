@@ -49,22 +49,21 @@
 
       <hr/>
 
-      <h3>About<%= request.getSession().getAttribute("user")%><h3>
+      <h2>About <%= request.getSession().getAttribute("user")%></h2>
       <p>Hello there!</p>
 
-      <h5>Edit your About Me (only you can see this)</h5>
+      <h4>Edit your About Me (only you can see this)</h4>
       <form action="/users" method="POST">
           <div class="form-group">
-            <label class="form-control-label">Title:</label>
           <textarea type="text" name="aboutme"></textarea>
         </div>
 
-        <button type="submit">Create</button>
+        <button type="submit">Submit</button>
       </form>
 
       <hr/>
 
-      <h3><%= request.getSession().getAttribute("user")%>'s Sent Messages</h3>
+      <h2><%= request.getSession().getAttribute("user")%>'s Sent Messages</h2>
 
     <% } %>
 
