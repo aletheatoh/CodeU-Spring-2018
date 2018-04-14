@@ -21,7 +21,6 @@
 <%@ page import="codeu.model.store.basic.UserStore" %>
 
 <%
-Conversation conversation = (Conversation) request.getAttribute("conversation");
 List<Message> messages = (List<Message>) request.getAttribute("messages");
 %>
 
@@ -74,7 +73,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
       <h3><%= request.getSession().getAttribute("user")%>'s Sent Messages</h3>
 
-      <div id="chat">
+      <%-- <div id="chat">
         <ul>
       <%
         for (Message message : messages) {
@@ -86,7 +85,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
         }
       %>
         </ul>
-      </div>
+      </div> --%>
 
     <% } %>
 
