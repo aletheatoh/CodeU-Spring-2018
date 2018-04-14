@@ -75,7 +75,7 @@ public class UserServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
-    // List<Conversation> conversations = conversationStore.getAllConversations();
+    List<Conversation> conversations = conversationStore.getAllConversations();
     request.setAttribute("conversations", conversations);
     // List<Message> messages = messageStore.getAllMessages();
     // request.setAttribute("messages", messages);
