@@ -78,7 +78,7 @@ public class UserServlet extends HttpServlet {
     // List<Conversation> conversations = conversationStore.getAllConversations();
     List<Message> messages = messageStore.getAllMessages();
     request.setAttribute("messages", messages);
-
+    
     // to get all messages:
     // UUID conversationId = conversation.getId();
     //

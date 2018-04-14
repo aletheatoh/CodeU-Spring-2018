@@ -20,9 +20,9 @@
 <%@ page import="codeu.model.data.Message" %>
 <%@ page import="codeu.model.store.basic.UserStore" %>
 
-<%
+<%-- <%
 List<Message> messages = (List<Message>) request.getAttribute("messages");
-%>
+%> --%>
 
 <!DOCTYPE html>
 <html>
@@ -72,20 +72,6 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
       <hr/>
 
       <h3><%= request.getSession().getAttribute("user")%>'s Sent Messages</h3>
-
-      <%-- <div id="chat">
-        <ul>
-      <%
-        for (Message message : messages) {
-          String author = UserStore.getInstance()
-            .getUser(message.getAuthorId()).getName();
-      %>
-        <li><strong><%= author %>:</strong> <%= message.getContent() %></li>
-      <%
-        }
-      %>
-        </ul>
-      </div> --%>
 
     <% } %>
 
