@@ -76,9 +76,10 @@ public class UserServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     // List<Conversation> conversations = conversationStore.getAllConversations();
-    List<Message> messages = messageStore.getAllMessages();
-    request.setAttribute("messages", messages);
-    
+    request.setAttribute("conversations", conversations);
+    // List<Message> messages = messageStore.getAllMessages();
+    // request.setAttribute("messages", messages);
+
     // to get all messages:
     // UUID conversationId = conversation.getId();
     //
