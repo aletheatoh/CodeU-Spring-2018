@@ -70,8 +70,18 @@ public class UserServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
-    List<Conversation> conversations = conversationStore.getAllConversations();
-    request.setAttribute("conversations", conversations);
+    // List<Conversation> conversations = conversationStore.getAllConversations();
+    List<Message> messages = messageStore.getAllMessages();
+    request.setAttribute("messages", messages);
+
+    // to get all messages:
+    // UUID conversationId = conversation.getId();
+    //
+    // List<Message> messages = messageStore.getMessagesInConversation(conversationId);
+    //
+    // request.setAttribute("conversation", conversation);
+    // request.setAttribute("messages", messages);
+
     request.getRequestDispatcher("/WEB-INF/view/user.jsp").forward(request, response);
   }
 

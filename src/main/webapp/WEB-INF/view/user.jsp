@@ -16,7 +16,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="codeu.model.data.Conversation" %>
 
-<%@ page import="java.util.List" %>
 <%@ page import="codeu.model.data.Conversation" %>
 <%@ page import="codeu.model.data.Message" %>
 <%@ page import="codeu.model.store.basic.UserStore" %>
@@ -96,21 +95,20 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
     <% } %>
 
     <%
-    List<Conversation> conversations =
-      (List<Conversation>) request.getAttribute("conversations");
-    if(conversations == null || conversations.isEmpty()){
+    List<Message> messages =
+      (List<Message>) request.getAttribute("messages");
+    if(messages == null || messages.isEmpty()){
     %>
-      <p>Create a conversation to get started.</p>
+      <p>You have no messages.</p>
     <%
     }
     else{
     %>
       <ul class="mdl-list">
     <%
-      for(Conversation conversation : conversations){
+      for(Message message : messages){
     %>
-      <li><a href="/chat/<%= conversation.getTitle() %>">
-        <%= conversation.getTitle() %></a></li>
+      <li><b><%= message.getCreationTime()%>:</b> <%= message.getContent()%></li>
     <%
       }
     %>
