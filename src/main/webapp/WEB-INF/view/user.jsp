@@ -47,7 +47,7 @@
       <form action="/conversations" method="POST">
           <div class="form-group">
             <label class="form-control-label">Title:</label>
-          <textarea type="text" name="conversationTitle">
+          <textarea type="text" name="conversationTitle"></textarea>
         </div>
 
         <button type="submit">Create</button>
