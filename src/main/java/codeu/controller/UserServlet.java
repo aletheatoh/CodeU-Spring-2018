@@ -72,7 +72,7 @@ public class UserServlet extends HttpServlet {
       throws IOException, ServletException {
     List<Conversation> conversations = conversationStore.getAllConversations();
     request.setAttribute("conversations", conversations);
-    request.getRequestDispatcher("/WEB-INF/view/conversations.jsp").forward(request, response);
+    request.getRequestDispatcher("/WEB-INF/view/user.jsp").forward(request, response);
   }
 
   /**
