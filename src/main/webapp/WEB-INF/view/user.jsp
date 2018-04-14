@@ -54,11 +54,13 @@
       </form>
 
       <hr/>
+
+      <%-- put user profile here --%>
+      <h1><%= request.getSession().getAttribute("user")%>'s Profile Page</h1>
+
     <% } %>
 
-    <% if(request.getSession().getAttribute("user") != null){ %>
-      <h1><%= request.getSession().getAttribute("user")%>'s Profile Page</a>
-    <% } else{ %>
+    <% if(request.getSession().getAttribute("user") == null){ %>
       <h1>You're not authorized to view this page</h1>
     <% } %>
 
