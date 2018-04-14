@@ -141,7 +141,7 @@ public class UserServlet extends HttpServlet {
     //     new Conversation(UUID.randomUUID(), user.getId(), conversationTitle, Instant.now());
     //
     // conversationStore.addConversation(conversation);
-    response.send(aboutme);
-    // response.sendRedirect("/chat/" + conversationTitle);
+    // response.send(aboutme);
+    response.sendRedirect("/users/" + username);
   }
 }
