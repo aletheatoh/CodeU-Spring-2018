@@ -27,8 +27,10 @@ public class UserTest {
     String name = "test_username";
     Instant creation = Instant.now();
     String password = "password";
+    String aboutme = "aboutme";
+    String profilePic = "profilePic";
 
-    User user = new User(id, name,password, creation);
+    User user = new User(id, name, password, creation, aboutme, profilePic);
 
     Assert.assertEquals(id, user.getId());
     Assert.assertEquals(name, user.getName());
