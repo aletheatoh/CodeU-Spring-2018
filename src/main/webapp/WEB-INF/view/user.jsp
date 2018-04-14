@@ -16,6 +16,16 @@
 <%@ page import="java.util.List" %>
 <%@ page import="codeu.model.data.Conversation" %>
 
+<%@ page import="java.util.List" %>
+<%@ page import="codeu.model.data.Conversation" %>
+<%@ page import="codeu.model.data.Message" %>
+<%@ page import="codeu.model.store.basic.UserStore" %>
+
+<%
+Conversation conversation = (Conversation) request.getAttribute("conversation");
+List<Message> messages = (List<Message>) request.getAttribute("messages");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +49,7 @@
   <div id="container">
 
     <% if(request.getAttribute("error") != null){ %>
-        <h2 style="color:red"><%= request.getAttribute("error") %></h2>
+        <h3 style="color:red"><%= request.getAttribute("error") %></h3>
     <% } %>
 
     <% if(request.getSession().getAttribute("user") != null){ %>
@@ -49,7 +59,7 @@
 
       <hr/>
 
-      <h2>About <%= request.getSession().getAttribute("user")%></h2>
+      <h3>About <%= request.getSession().getAttribute("user")%></h3>
       <p>Hello there!</p>
 
       <h4>Edit your About Me (only you can see this)</h4>
@@ -63,7 +73,21 @@
 
       <hr/>
 
-      <h2><%= request.getSession().getAttribute("user")%>'s Sent Messages</h2>
+      <h3><%= request.getSession().getAttribute("user")%>'s Sent Messages</h3>
+
+      <div id="chat">
+        <ul>
+      <%
+        for (Message message : messages) {
+          String author = UserStore.getInstance()
+            .getUser(message.getAuthorId()).getName();
+      %>
+        <li><strong><%= author %>:</strong> <%= message.getContent() %></li>
+      <%
+        }
+      %>
+        </ul>
+      </div>
 
     <% } %>
 
