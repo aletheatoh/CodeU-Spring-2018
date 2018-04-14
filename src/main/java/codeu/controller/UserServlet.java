@@ -50,6 +50,7 @@ public class UserServlet extends HttpServlet {
     super.init();
     setUserStore(UserStore.getInstance());
     setConversationStore(ConversationStore.getInstance());
+    setMessageStore(MessageStore.getInstance());
   }
 
   /**
@@ -68,6 +69,10 @@ public class UserServlet extends HttpServlet {
     this.conversationStore = conversationStore;
   }
 
+  void setMessageStore(MessageStore messageStore) {
+    this.messageStore = messageStore;
+  }
+
   /**
    * This function fires when a user navigates to the conversations page. It gets all of the
    * conversations from the model and forwards to conversations.jsp for rendering the list.
@@ -77,8 +82,9 @@ public class UserServlet extends HttpServlet {
       throws IOException, ServletException {
     List<Conversation> conversations = conversationStore.getAllConversations();
     request.setAttribute("conversations", conversations);
-    // List<Message> messages = messageStore.getAllMessages();
-    // request.setAttribute("messages", messages);
+
+    List<Message> messages = messageStore.getAllMessages();
+    request.setAttribute("messages", messages);
 
     // to get all messages:
     // UUID conversationId = conversation.getId();
