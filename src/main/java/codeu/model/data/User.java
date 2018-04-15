@@ -19,13 +19,13 @@ import java.util.UUID;
 
 /** Class representing a registered user. */
 public class User {
-  private final UUID id;
-  private final String name;
-  private final Instant creation;
-  private final String hashedPassword;
+  private UUID id;
+  private String name;
+  private Instant creation;
+  private String hashedPassword;
 
-  private final String aboutMe;
-  private final String profilePicture;
+  private String aboutMe;
+  private String profilePicture;
 
   /**
    * Constructs a new User.
