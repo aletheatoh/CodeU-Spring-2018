@@ -61,9 +61,6 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
       <p></p>
 
       <h4>Edit your Profile Details (only you can see this)</h4>
-      <% User user = (User) request.getSession().getAttribute("userObj"); if (user != null){ %>
-        <p><%= user.getName() %></p>
-      <% } %>
       <form action="/users" method="POST">
           <div class="form-group">
           <label>Change your profile picture</label><input type="file" name="profilePic" accept="image/*">
