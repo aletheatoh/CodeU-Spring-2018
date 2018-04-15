@@ -87,6 +87,7 @@ public class UserServlet extends HttpServlet {
     request.setAttribute("messages", messages);
 
     String username = (String) request.getSession().getAttribute("user");
+
     User user = userStore.getUser(username);
     request.setAttribute("userObj", user);
 
