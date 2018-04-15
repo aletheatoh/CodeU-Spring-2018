@@ -67,7 +67,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
           <br/>
           <label>Change your About Me</label>
           <br/>
-          <textarea type="text" name="aboutme"><%= request.getSession().getAttribute("aboutme")%></textarea>
+          <textarea type="text" name="aboutme"><%= request.getAttribute("aboutme")%></textarea>
         </div>
 
         <button type="submit">Submit</button>
