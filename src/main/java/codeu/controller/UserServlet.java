@@ -74,8 +74,7 @@ public class UserServlet extends HttpServlet {
   }
 
   /**
-   * This function fires when a user navigates to the conversations page. It gets all of the
-   * conversations from the model and forwards to conversations.jsp for rendering the list.
+   * This function fires when a user navigates to the user page.
    */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -91,6 +90,8 @@ public class UserServlet extends HttpServlet {
     User user = userStore.getUser(username);
 
     request.setAttribute("aboutme", user.getAboutMe());
+
+    request.setAttribute("profilePic", user.getProfilePic());
 
     // to get all messages:
     // UUID conversationId = conversation.getId();
@@ -116,7 +117,7 @@ public class UserServlet extends HttpServlet {
 
     if (username == null) {
       // user is not logged in, don't let them edit a user profile
-      response.sendRedirect("/users");
+      response.sendRedirect("/user");
       return;
     }
 
@@ -125,7 +126,7 @@ public class UserServlet extends HttpServlet {
     if (user == null) {
       // user was not found, don't let them update their profile
       System.out.println("User not found: " + username);
-      response.sendRedirect("/users");
+      response.sendRedirect("/user");
       return;
     }
 
@@ -157,6 +158,6 @@ public class UserServlet extends HttpServlet {
     //
     // conversationStore.addConversation(conversation);
 
-    response.sendRedirect("/users/");
+    response.sendRedirect("/user");
   }
 }

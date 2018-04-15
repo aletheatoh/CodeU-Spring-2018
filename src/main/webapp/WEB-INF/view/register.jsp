@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Register</title>
 <link rel="stylesheet" href="/css/main.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
  <style>
    label {
      display: inline-block;
@@ -38,12 +39,37 @@
      <label for="password">Password: </label>
      <input type="password" name="password" id="password">
      <br/>
-     <label>Upload your profile picture</label><input type="file" name="profilePic" accept="image/*">
+     <label>Upload your profile picture</label>
      <br/>
+     <input id="fileupload" type="file" name="profilePic" accept="image/*">
+     <br/>
+     <b>Live Preview</b>
+     <br/>
+     <img id="myImg" style="width:190px;"src="#" alt="your image" />
+     <br/>
+     <label>Write a Bio</label>
      <textarea type="text" name="aboutme"></textarea>
      <br/>
      <button type="submit">Submit</button>
    </form>
  </div>
+
+<script language="javascript" type="text/javascript">
+$(function () {
+    $(":file").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+});
+
+function imageIsLoaded(e) {
+    $('#myImg').attr('src', e.target.result);
+};
+
+</script>
+
 </body>
 </html>

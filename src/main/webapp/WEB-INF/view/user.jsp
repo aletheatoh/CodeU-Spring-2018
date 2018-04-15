@@ -29,6 +29,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 <head>
   <title>Conversations</title>
   <link rel="stylesheet" href="/css/main.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 <body>
 
@@ -61,10 +62,11 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
       <p></p>
 
       <h4>Edit your Profile Details (only you can see this)</h4>
-      <form action="/users" method="POST">
+      <form action="/user" method="POST">
           <div class="form-group">
           <label>Change your profile picture</label><input type="file" name="profilePic" accept="image/*">
           <br/>
+          <p><%= request.getAttribute("production")%></p>
           <label>Change your About Me</label>
           <br/>
           <textarea type="text" name="aboutme"><%= request.getAttribute("aboutme")%></textarea>
@@ -72,10 +74,16 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
         <button type="submit">Submit</button>
       </form>
-
       <hr/>
 
-      <h3><%= request.getSession().getAttribute("user")%>'s Sent Messages</h3>
+      <button id="location-button">Check In</button>
+      <div id="output"></div>
+
+      <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+      <p id='latitudeAndLongitude'></p>
+      <p id='address'></p>
+
+      <h3>All Messages Available:</h3>
 
     <% } %>
 
@@ -107,5 +115,18 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
     %>
     <hr/>
   </div>
+<script>
+
+$('#location-button').click(function() {
+  navigator.geolocation.getCurrentPosition(function(position){
+    console.log('works!');
+    console.log(position);
+    $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCEpO1YXIeCe8igHrFGb1xHTPjRtKSsgzo", function(data) {
+      console.log(data["results"][0]["formatted_address"]);
+    })
+  });
+});
+</script>
+
 </body>
 </html>

@@ -157,6 +157,10 @@ public class PersistentDataStore {
     userEntity.setProperty("username", user.getName());
     userEntity.setProperty("password", user.getPassword());
     userEntity.setProperty("creation_time", user.getCreationTime().toString());
+
+    userEntity.setProperty("aboutme", user.getAboutMe());
+    userEntity.setProperty("profilePic", user.getProfilePic());
+    
     datastore.put(userEntity);
   }
 

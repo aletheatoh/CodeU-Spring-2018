@@ -73,6 +73,11 @@ public class User {
     return aboutMe;
   }
 
+  /** Returns the about me of this User. */
+  public String getProfilePic() {
+    return profilePicture;
+  }
+
   public void updateUser(UUID id, String name, String password, Instant creation, String aboutMe, String profilePicture) {
     this.id = id;
     this.name = name;
