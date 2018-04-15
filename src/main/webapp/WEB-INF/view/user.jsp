@@ -58,7 +58,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
       <hr/>
 
       <h3>About <%= request.getSession().getAttribute("user")%></h3>
-      <p><%= request.getSession().getAttribute("userObj").aboutme%></p>
+      <p><%= request.getSession().getAttribute("userObj").getAboutMe()%></p>
 
       <h4>Edit your Profile Details (only you can see this)</h4>
       <form action="/users" method="POST">
@@ -66,7 +66,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
           <label>Change your profile picture</label><input type="file" name="profilePic" accept="image/*">
           <br/>
           <label>Change your About Me</label>
-          <textarea type="text" name="aboutme"><%= request.getSession().getAttribute("userObj").aboutme%></textarea>
+          <textarea type="text" name="aboutme"><%= request.getSession().getAttribute("userObj").getAboutMe()%></textarea>
         </div>
 
         <button type="submit">Submit</button>
