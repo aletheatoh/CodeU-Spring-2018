@@ -73,7 +73,7 @@ public class User {
     return aboutMe;
   }
 
-  /** Returns the about me of this User. */
+  /** Returns the profile picture src of this User. */
   public String getProfilePic() {
     return profilePicture;
   }
