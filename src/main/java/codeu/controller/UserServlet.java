@@ -134,6 +134,8 @@ public class UserServlet extends HttpServlet {
     // update user
     user.updateUser(user.getId(), user.getName(), user.getPassword(), user.getCreationTime(), aboutme, profilePic);
 
+    request.setAttribute("userObj", user);
+
     // String conversationTitle = request.getParameter("conversationTitle");
     // if (!conversationTitle.matches("[\\w*]*")) {
     //   request.setAttribute("error", "Please enter only letters and numbers.");
