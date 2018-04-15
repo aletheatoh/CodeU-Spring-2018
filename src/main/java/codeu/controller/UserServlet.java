@@ -133,30 +133,11 @@ public class UserServlet extends HttpServlet {
     String aboutme = request.getParameter("aboutme");
     String profilePic = request.getParameter("profilePic");
 
-    // update user
+    // update user profile
     user.updateUser(user.getId(), user.getName(), user.getPassword(), user.getCreationTime(), aboutme, profilePic);
 
     request.setAttribute("aboutme", aboutme);
     request.setAttribute("profilePic", profilePic);
-
-    // String conversationTitle = request.getParameter("conversationTitle");
-    // if (!conversationTitle.matches("[\\w*]*")) {
-    //   request.setAttribute("error", "Please enter only letters and numbers.");
-    //   request.getRequestDispatcher("/WEB-INF/view/conversations.jsp").forward(request, response);
-    //   return;
-    // }
-    //
-    // if (conversationStore.isTitleTaken(conversationTitle)) {
-    //   // conversation title is already taken, just go into that conversation instead of creating a
-    //   // new one
-    //   response.sendRedirect("/chat/" + conversationTitle);
-    //   return;
-    // }
-
-    // Conversation conversation =
-    //     new Conversation(UUID.randomUUID(), user.getId(), conversationTitle, Instant.now());
-    //
-    // conversationStore.addConversation(conversation);
 
     response.sendRedirect("/user");
   }
