@@ -131,7 +131,7 @@ public class UserServlet extends HttpServlet {
     String profilePic = request.getParameter("profilePic");
 
     // update user
-    user.updateUser(user.id, user.name, user.password, user.creation, aboutme, profilePic);
+    user.updateUser(user.getId(), user.getName(), user.getPassword(), user.getCreationTime(), aboutme, profilePic);
 
     // String conversationTitle = request.getParameter("conversationTitle");
     // if (!conversationTitle.matches("[\\w*]*")) {
