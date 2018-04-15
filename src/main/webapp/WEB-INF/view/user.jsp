@@ -60,10 +60,12 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
       <h3>About <%= request.getSession().getAttribute("user")%></h3>
       <p>Hello there!</p>
 
-      <h4>Edit your About Me (only you can see this)</h4>
+      <h4>Edit your Profile Details (only you can see this)</h4>
       <form action="/users" method="POST">
           <div class="form-group">
-          <label>Upload your profile picture</label><input type="file" name="profilePic" accept="image/*">
+          <label>Change your profile picture</label><input type="file" name="profilePic" accept="image/*">
+          <br/>
+          <label>Change your About Me</label>
           <textarea type="text" name="aboutme"></textarea>
         </div>
 
