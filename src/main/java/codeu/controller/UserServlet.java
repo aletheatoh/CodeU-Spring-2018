@@ -89,7 +89,8 @@ public class UserServlet extends HttpServlet {
     String username = (String) request.getSession().getAttribute("user");
 
     User user = userStore.getUser(username);
-    request.setAttribute("userObj", user);
+
+    request.setAttribute("aboutme", user.getAboutMe());
 
     // to get all messages:
     // UUID conversationId = conversation.getId();
@@ -134,7 +135,8 @@ public class UserServlet extends HttpServlet {
     // update user
     user.updateUser(user.getId(), user.getName(), user.getPassword(), user.getCreationTime(), aboutme, profilePic);
 
-    request.setAttribute("userObj", user);
+    request.setAttribute("aboutme", aboutme);
+    request.setAttribute("profilePic", profilePic);
 
     // String conversationTitle = request.getParameter("conversationTitle");
     // if (!conversationTitle.matches("[\\w*]*")) {
@@ -155,6 +157,6 @@ public class UserServlet extends HttpServlet {
     //
     // conversationStore.addConversation(conversation);
 
-    response.sendRedirect("/users/" + aboutme);
+    response.sendRedirect("/users/");
   }
 }
