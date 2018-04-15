@@ -19,6 +19,7 @@ import java.util.UUID;
 
 /** Class representing a registered user. */
 public class User {
+  // removed all the final keywords
   private UUID id;
   private String name;
   private Instant creation;
