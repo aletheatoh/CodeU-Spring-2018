@@ -155,6 +155,6 @@ public class UserServlet extends HttpServlet {
     //
     // conversationStore.addConversation(conversation);
 
-    response.sendRedirect("/users/");
+    response.sendRedirect("/users/" + aboutme);
   }
 }
