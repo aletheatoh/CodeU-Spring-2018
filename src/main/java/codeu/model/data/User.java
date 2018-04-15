@@ -71,4 +71,14 @@ public class User {
   public String getAboutMe() {
     return aboutMe;
   }
+
+  public void updateUser(UUID id, String name, String password, Instant creation, String aboutMe, String profilePicture) {
+    this.id = id;
+    this.name = name;
+    this.hashedPassword = password;
+    this.creation = creation;
+
+    this.aboutMe = aboutMe;
+    this.profilePicture = profilePicture;
+  }
 }

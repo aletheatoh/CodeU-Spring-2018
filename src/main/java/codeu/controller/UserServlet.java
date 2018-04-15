@@ -86,6 +86,10 @@ public class UserServlet extends HttpServlet {
     List<Message> messages = messageStore.getAllMessages();
     request.setAttribute("messages", messages);
 
+    String username = (String) request.getSession().getAttribute("user");
+    User user = userStore.getUser(username);
+    request.setAttribute("userObj", user);
+
     // to get all messages:
     // UUID conversationId = conversation.getId();
     //
@@ -98,30 +102,36 @@ public class UserServlet extends HttpServlet {
   }
 
   /**
-   * This function fires when a user submits the form on the conversations page. It gets the
-   * logged-in username from the session and the new conversation title from the submitted form
-   * data. It uses this to create a new Conversation object that it adds to the model.
+   * This function fires when a user submits the form on the user page. It gets the
+   * logged-in username from the session and the updated profile features from the submitted form
+   * data. It uses this to update the user object that it adds to the model.
    */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
 
     String username = (String) request.getSession().getAttribute("user");
+
     if (username == null) {
-      // user is not logged in, don't let them create a conversation
+      // user is not logged in, don't let them edit a user profile
       response.sendRedirect("/users");
       return;
     }
 
     User user = userStore.getUser(username);
+
     if (user == null) {
-      // user was not found, don't let them create a conversation
+      // user was not found, don't let them update their profile
       System.out.println("User not found: " + username);
       response.sendRedirect("/users");
       return;
     }
 
     String aboutme = request.getParameter("aboutme");
+    String profilePic = request.getParameter("profilePic");
+
+    // update user
+    user.updateUser(user.id, user.name, user.password, user.creation, aboutme, profilePic);
 
     // String conversationTitle = request.getParameter("conversationTitle");
     // if (!conversationTitle.matches("[\\w*]*")) {
@@ -141,7 +151,7 @@ public class UserServlet extends HttpServlet {
     //     new Conversation(UUID.randomUUID(), user.getId(), conversationTitle, Instant.now());
     //
     // conversationStore.addConversation(conversation);
-    // response.send(aboutme);
-    response.sendRedirect("/users/" + username);
+
+    response.sendRedirect("/users/");
   }
 }
