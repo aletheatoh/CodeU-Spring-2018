@@ -66,8 +66,8 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
           <label>Change your profile picture</label><input type="file" name="profilePic" accept="image/*">
           <br/>
           <label>Change your About Me</label>
-          <textarea type="text" name="aboutme"><% if(request.getSession().getAttribute("userObj") != null){ %>
-            <h1><%= request.getSession().getAttribute("userObj").getAboutMe() %></h1>
+          <textarea type="text" name="aboutme"><% User user = (User) request.getSession().getAttribute("userObj"); if (user != null){ %>
+            <h1><%= user.getAboutMe() %></h1>
           <% } %></textarea>
         </div>
 
