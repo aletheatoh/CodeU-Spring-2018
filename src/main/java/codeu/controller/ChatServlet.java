@@ -20,19 +20,27 @@ import codeu.model.data.User;
 import codeu.model.store.basic.ConversationStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.UserStore;
+
+import java.awt.*;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
+
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
 /** Servlet class responsible for the chat page. */
 public class ChatServlet extends HttpServlet {
+
+  private static final Logger LOG = Logger.getLogger("Chat Server Startup");
 
   /** Store class that gives access to Conversations. */
   private ConversationStore conversationStore;
@@ -74,6 +82,99 @@ public class ChatServlet extends HttpServlet {
    */
   void setUserStore(UserStore userStore) {
     this.userStore = userStore;
+  }
+
+  private String parsedEmojis(String messageUnparsed) {
+    //Parse any emoji text before sending message
+    messageUnparsed = messageUnparsed.replaceAll(":grinning:", "\uD83D\uDE00");
+    messageUnparsed = messageUnparsed.replaceAll(":laughing:", "\uD83D\uDE02");
+    messageUnparsed = messageUnparsed.replaceAll(":winking:", "\uD83D\uDE09");
+    messageUnparsed = messageUnparsed.replaceAll(":sunglasses:", "\uD83D\uDE0E");
+    messageUnparsed = messageUnparsed.replaceAll(":heart_eyes:", "\uD83D\uDE0D");
+    messageUnparsed = messageUnparsed.replaceAll(":neutral:", "\uD83D\uDE10");
+    messageUnparsed = messageUnparsed.replaceAll(":confused:", "\uD83D\uDE15");
+    messageUnparsed = messageUnparsed.replaceAll(":disappointed:", "\uD83D\uDE1E");
+    messageUnparsed = messageUnparsed.replaceAll(":crying:", "\uD83D\uDE2D");
+    messageUnparsed = messageUnparsed.replaceAll(":angry:", "\uD83D\uDE20");
+    return messageUnparsed;
+  }
+
+  //Bold - **, Underline - //, Italicize - ~, Strikethrough - =
+  private String parsedTextStyles(String messageUnparsed) {
+    messageUnparsed = replaceAllStyles("underline", messageUnparsed);
+    messageUnparsed = replaceAllStyles("bold", messageUnparsed);
+    messageUnparsed = replaceAllStyles("italicize", messageUnparsed);
+    messageUnparsed = replaceAllStyles("strikethrough", messageUnparsed);
+    return messageUnparsed;
+  }
+
+  /**
+   * Function will return -1, -1 if none of the stylizations encountered is correctly formatted.
+   * Otherwise, it will return the indices in which it encounters a correctly formatted stylization.
+   * @param stylization
+   * @return
+   */
+  private int[] getIndexOfStyle(String stylization, String messageUnparsed) {
+    int[] indicies = new int[2];
+    indicies[0] = -1; indicies[1] = -1;
+    String style = "*";
+    if(stylization.equals("underline")) {
+      style = "/";
+    }
+    if (stylization.equals("italicize")) {
+      style = "~";
+    }
+    if (stylization.equals("strikethrough")) {
+      style = "=";
+    }
+    if (messageUnparsed.indexOf(style) == -1) return indicies;
+    else {
+      if (messageUnparsed.substring(messageUnparsed.indexOf(style) + 1).indexOf(style) == -1) return indicies;
+      else {
+        indicies[0] = messageUnparsed.indexOf(style);
+        indicies[1] = messageUnparsed.substring(messageUnparsed.indexOf(style) + 1).indexOf(style) + 1;
+        LOG.info(""+ indicies[0]);
+        LOG.info("" + indicies[1]);
+        return indicies;
+      }
+    }
+  }
+
+  private String replaceAllStyles(String stylization, String messageUnparsed) {
+    String style = "<strong>";
+    String styleEnding = "</strong>";
+    if(stylization.equals("underline")) {
+      style = "<u>";
+      styleEnding = "</u>";
+    }
+    if (stylization.equals("italicize")) {
+      style = "<i>";
+      styleEnding = "</i>";
+    }
+    if (stylization.equals("strikethrough")) {
+      style = "<strike>";
+      styleEnding = "</strike>";
+    }
+    StringBuilder messageReplaced = new StringBuilder();
+    int[] indicies = getIndexOfStyle(stylization, messageUnparsed);
+    while (messageUnparsed.length() != 0 && indicies[0] != -1) {
+      if (indicies[0] == 0) {
+        messageReplaced.append(style + messageUnparsed.substring(1, indicies[1]) + styleEnding);
+      }
+      else {
+        messageReplaced.append(messageUnparsed.substring(0, indicies[0]) + style + messageUnparsed.substring(indicies[0]
+                + 1, indicies[1]) + styleEnding);
+      }
+      if(indicies[1] == messageUnparsed.length() - 1) {
+        messageUnparsed = "";
+      } else {
+        messageUnparsed = messageUnparsed.substring(indicies[1] + 1);
+      }
+    }
+    if (indicies[0] == -1) {
+      messageReplaced.append(messageUnparsed);
+    }
+    return messageReplaced.toString();
   }
 
   /**
@@ -142,6 +243,9 @@ public class ChatServlet extends HttpServlet {
 
     // this removes any HTML from the message content
     String cleanedMessageContent = Jsoup.clean(messageContent, Whitelist.none());
+
+    cleanedMessageContent = parsedEmojis(cleanedMessageContent);
+    cleanedMessageContent = parsedTextStyles(cleanedMessageContent);
 
     Message message =
         new Message(

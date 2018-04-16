@@ -56,3 +56,11 @@ input {
 button {
   font-size: 18px;
 }
+
+#shortcuts {
+    width: 800px;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
