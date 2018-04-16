@@ -93,13 +93,9 @@ public class UserServlet extends HttpServlet {
 
     request.setAttribute("profilePic", user.getProfilePic());
 
-    // to get all messages:
     // UUID conversationId = conversation.getId();
-    //
-    // List<Message> messages = messageStore.getMessagesInConversation(conversationId);
-    //
+
     // request.setAttribute("conversation", conversation);
-    // request.setAttribute("messages", messages);
 
     request.getRequestDispatcher("/WEB-INF/view/user.jsp").forward(request, response);
   }
@@ -134,7 +130,7 @@ public class UserServlet extends HttpServlet {
     String profilePic = request.getParameter("profilePic");
 
     // update user profile
-    user.updateUser(user.getId(), user.getName(), user.getPassword(), user.getCreationTime(), aboutme, profilePic);
+    user.updateUser(user.getPassword(), aboutme, profilePic);
 
     request.setAttribute("aboutme", aboutme);
     request.setAttribute("profilePic", profilePic);
