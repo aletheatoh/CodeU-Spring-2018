@@ -19,12 +19,12 @@ import java.util.UUID;
 
 /** Class representing a registered user. */
 public class User {
-  // removed all the final keywords
+  // only allow user to update password, aboutMe, and profilePicture
   private final UUID id;
   private final String name;
   private final Instant creation;
+  
   private String hashedPassword;
-
   private String aboutMe;
   private String profilePicture;
 
@@ -78,6 +78,7 @@ public class User {
     return profilePicture;
   }
 
+  // only allow user to update password, aboutMe, and profilePicture
   public void updateUser(String password, String aboutMe, String profilePicture) {
     this.hashedPassword = password;
     this.aboutMe = aboutMe;
