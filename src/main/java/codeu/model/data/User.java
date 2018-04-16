@@ -20,9 +20,9 @@ import java.util.UUID;
 /** Class representing a registered user. */
 public class User {
   // removed all the final keywords
-  private UUID id;
-  private String name;
-  private Instant creation;
+  private final UUID id;
+  private final String name;
+  private final Instant creation;
   private String hashedPassword;
 
   private String aboutMe;
@@ -78,12 +78,8 @@ public class User {
     return profilePicture;
   }
 
-  public void updateUser(UUID id, String name, String password, Instant creation, String aboutMe, String profilePicture) {
-    this.id = id;
-    this.name = name;
+  public void updateUser(String password, String aboutMe, String profilePicture) {
     this.hashedPassword = password;
-    this.creation = creation;
-
     this.aboutMe = aboutMe;
     this.profilePicture = profilePicture;
   }
