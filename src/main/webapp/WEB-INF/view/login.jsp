@@ -26,6 +26,7 @@
     <a href="/conversations">Conversations</a>
     <% if(request.getSession().getAttribute("user") != null){ %>
       <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
+      <a href="/index.jsp">Log Out</a>
     <% } else{ %>
       <a href="/login">Login</a>
       <a href="/register">Register</a>
