@@ -27,13 +27,10 @@
     import javax.servlet.http.HttpServletRequest;
     import javax.servlet.http.HttpServletResponse;
 
-    /** Servlet class responsible for the login page. */
+    /** Servlet class responsible for the log out page. */
     public class LogoutServlet extends HttpServlet {
 
       private static final Logger LOG = Logger.getLogger("ServerStartupListener");
-
-      /** Store class that gives access to Users. */
-      private UserStore userStore;
 
       /**
        * Set up state for handling login-related requests. This method is only called when running in a
@@ -45,8 +42,8 @@
         LOG.info("servletInfo: " + super.getServletInfo());
       }
       /**
-       * This function fires when a user requests the /login URL. It simply forwards the request to
-       * login.jsp.
+       * This function fires when a user requests the /logout URL. It simply forwards the request to
+       * logout.jsp.
        */
       @Override
       public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -55,16 +52,13 @@
       }
 
       /**
-       * This function fires when a user submits the login form. It gets the username and password from the submitted
-       * form data, checks that they're valid, and either adds the user to the session so we know the user is logged in or shows an error to the user.
+       * This function fires when a user submits the logout form. It simply log the user out of the current
+       * session and send them back to the index.jsp page
        */
       @Override
       public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
             request.getSession().setAttribute("user", null);
             response.sendRedirect("/index.jsp");
-        
-      
-
     }
 
 }
