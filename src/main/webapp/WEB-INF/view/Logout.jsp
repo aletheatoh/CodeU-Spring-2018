@@ -28,7 +28,7 @@
         <h2 style="color:red"><%= request.getAttribute("error") %></h2>
     <% } %>
 
-    <form action="/Logout" method="POST">
+    <form action="/logout" method="POST">
       <h4>Do you want to log out of the web chat?</h4>
       <br></br>
       <button type="submit">Log Out</button>
