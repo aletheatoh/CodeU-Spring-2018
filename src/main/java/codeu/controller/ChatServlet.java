@@ -42,8 +42,6 @@ import org.jsoup.safety.Whitelist;
 /** Servlet class responsible for the chat page. */
 public class ChatServlet extends HttpServlet {
 
-  private static final Logger LOG = Logger.getLogger("Chat Server Startup");
-
   /** Store class that gives access to Conversations. */
   private ConversationStore conversationStore;
 
