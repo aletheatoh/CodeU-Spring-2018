@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Load Test Data</title>
+  <title>CodeU Chat App</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -31,17 +31,13 @@
       <a href="/register">Register</a>
     <% } %>
     <a href="/about.jsp">About</a>
-    <a href="/admin">Admin</a>
   </nav>
 
   <div id="container">
-    <h1>Load Test Data</h1>
-    <p>This will load a number of users, conversations, and messages for testing
-        purposes.</p>
-    <form action="/testdata" method="POST">
-      <button type="submit" value="confirm" name="confirm">Confirm</button>
-      <button type="submit" value="cancel" name="cancel">Do Nothing</button>
-    </form>
+    <div
+      style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
+  <h1>This is the exclusive omnipotent admin page: </h1>
+    </div>
   </div>
 </body>
 </html>
