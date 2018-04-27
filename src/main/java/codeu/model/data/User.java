@@ -15,6 +15,7 @@
 package codeu.model.data;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.UUID;
 
 /** Class representing a registered user. */
@@ -23,7 +24,11 @@ public class User {
   private final String name;
   private final Instant creation;
   private final String hashedPassword;
+  //private boolean active;
+  //private String email;
+  //private ArrayList<SecurityQuestion> securityQuestions;//still working on storing questions to database
 
+  
   /**
    * Constructs a new User.
    *
@@ -37,6 +42,9 @@ public class User {
     this.name = name;
     this.hashedPassword = password;
     this.creation = creation;
+    //this.active = false;//the user will be active after email validation
+    //this.email = null;//still working on email validation
+    
   }
 
   /** Returns the ID of this User. */
