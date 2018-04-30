@@ -25,6 +25,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,6 +47,37 @@ public class PersistentDataStore {
     datastore = DatastoreServiceFactory.getDatastoreService();
   }
 
+  /**
+   * Get all the security questions choice stored in database and return them in a hashmap 
+   * @return a hashmap with key = value property in database and in jsp and value = question
+   * @throws PersistentDataStoreException if an error was detected during the load from the
+   *     Datastore service
+   */
+  public HashMap<String, String> loadSecurityQuestions() throws PersistentDataStoreException {
+      HashMap<String, String> securityQuestions = new HashMap<String, String>();
+      //still working on this -> incomplete
+   // Retrieve all questions from the datastore.
+      Query query = new Query("security-question");
+      PreparedQuery results = datastore.prepare(query);
+
+      for (Entity entity : results.asIterable()) {
+        try {
+          String question = (String) entity.getProperty("question");
+          String value = (String)entity.getProperty("value");
+         
+          securityQuestions.put(value, question);
+        } catch (Exception e) {
+          // In a production environment, errors should be very rare. Errors which may
+          // occur include network errors, Datastore service errors, authorization errors,
+          // database entity definition mismatches, or service mismatches.
+          throw new PersistentDataStoreException(e);
+        }
+      }
+      
+      
+      return securityQuestions;
+  }
+  
   /**
    * Loads all User objects from the Datastore service and returns them in a List.
    *
