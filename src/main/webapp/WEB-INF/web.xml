@@ -82,9 +82,10 @@
     <servlet-class>codeu.controller.LogoutServlet</servlet-class>
   </servlet>
 
-	 <servlet-mapping>
+ <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
+ </servlet-mapping>
 
   <servlet>
     <servlet-name>AdminServlet</servlet-name>
