@@ -24,7 +24,7 @@ public class User {
   private final UUID id;
   private final String name;
   private final Instant creation;
-  private final String hashedPassword;
+  private String hashedPassword;
 
   private String aboutMe = "No Bio Available"; // default value
   private String profilePicture;
