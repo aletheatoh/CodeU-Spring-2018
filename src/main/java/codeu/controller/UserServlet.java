@@ -93,13 +93,9 @@ public class UserServlet extends HttpServlet {
 
     request.setAttribute("profilePic", user.getProfilePic());
 
-    // to get all messages:
     // UUID conversationId = conversation.getId();
-    //
-    // List<Message> messages = messageStore.getMessagesInConversation(conversationId);
-    //
+
     // request.setAttribute("conversation", conversation);
-    // request.setAttribute("messages", messages);
 
     request.getRequestDispatcher("/WEB-INF/view/user.jsp").forward(request, response);
   }
