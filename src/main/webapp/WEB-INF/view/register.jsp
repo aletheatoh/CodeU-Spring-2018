@@ -33,7 +33,7 @@
 		    }
 		%>
 
-		<form action="/register" method="POST">
+		<form action="/register" method="POST" enctype="multipart/form-data">
 		<div class = "row">
 			<div class = "col-label"><label for="username">Username: </label> </div>
 			<div class = "col-input"><input type="text" name="username" id="username" required> </div>
@@ -90,6 +90,19 @@
 			<div class = "col-label"><label for="answer2">Answer: </label> </div>
 			<div class = "col-input"><input type="text" name="answer2" id="answer2" required> </div>
 		</div>
+
+		<label>Upload your profile picture</label>
+		<br/>
+		<input id="fileupload" type="file" name="profilePic" accept=".jpg, .jpeg, .png">
+		<br/>
+		<b>Live Preview</b>
+		<br/>
+		<img id="myImg" style="width:190px;"src="#" alt="your image"/>
+		<br/>
+		<label>Write a Bio</label>
+		<textarea type="text" name="aboutme"></textarea>
+		<br/>
+
 		<div class = "row">
 			<button type="submit">Submit</button>
 		</div>
@@ -154,28 +167,6 @@
     capital.classList.add("invalid");
   	}
 
-<<<<<<< HEAD
-   <form action="/register" method="POST">
-     <label for="username">Username: </label>
-     <input type="text" name="username" id="username">
-     <br/>
-     <label for="password">Password: </label>
-     <input type="password" name="password" id="password">
-     <br/>
-     <label>Upload your profile picture</label>
-     <br/>
-     <input id="fileupload" type="file" name="profilePic" accept="image/*">
-     <br/>
-     <b>Live Preview</b>
-     <br/>
-     <img id="myImg" style="width:190px;"src="#" alt="your image" />
-     <br/>
-     <label>Write a Bio</label>
-     <textarea type="text" name="aboutme"></textarea>
-     <br/>
-     <button type="submit">Submit</button>
-   </form>
- </div>
 
 <script language="javascript" type="text/javascript">
 $(function () {
@@ -194,7 +185,7 @@ function imageIsLoaded(e) {
 
 </script>
 
-=======
+
   	// Validate numbers
   	var numbers = /[0-9]/g;
   	if(myInput.value.match(numbers)) {

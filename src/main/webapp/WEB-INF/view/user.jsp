@@ -83,7 +83,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
       <p id='latitudeAndLongitude'></p>
       <p id='address'></p>
 
-      <h3>All Messages Available:</h3>
+      <h3><%= request.getSession().getAttribute("user")%>'s Sent Messages</h3>
 
     <% } %>
 
@@ -105,10 +105,10 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
     <%
       for(Message message : messages){
     %>
+    <% if(message.getAuthorId() == request.getSession().getAttribute("user_id")){ %>
       <li><b><%= message.getCreationTime()%>:</b> <%= message.getContent()%></li>
-    <%
-      }
-    %>
+    <% } %>
+
       </ul>
     <%
     }

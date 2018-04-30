@@ -89,6 +89,7 @@ public class UserServlet extends HttpServlet {
 
     User user = userStore.getUser(username);
 
+    request.setAttribute("user_id", user.getId());
     request.setAttribute("aboutme", user.getAboutMe());
 
     request.setAttribute("profilePic", user.getProfilePic());
