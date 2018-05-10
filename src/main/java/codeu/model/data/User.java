@@ -20,15 +20,19 @@ import java.util.UUID;
 
 /** Class representing a registered user. */
 public class User {
+  // only allow user to update password, aboutMe, and profilePicture
   private final UUID id;
   private final String name;
   private final Instant creation;
-  private final String hashedPassword;
+  private String hashedPassword;
+
+  private String aboutMe = "No Bio Available"; // default value
+  private String profilePicture;
   //private boolean active;
   //private String email;
   //private ArrayList<SecurityQuestion> securityQuestions;//still working on storing questions to database
 
-  
+
   /**
    * Constructs a new User.
    *
@@ -37,14 +41,18 @@ public class User {
    * @param password the password of this User
    * @param creation the creation time of this User
    */
-  public User(UUID id, String name, String password, Instant creation) {
+  public User(UUID id, String name, String password, Instant creation, String aboutMe, String profilePicture) {
     this.id = id;
     this.name = name;
     this.hashedPassword = password;
     this.creation = creation;
+
+    this.aboutMe = aboutMe;
+    this.profilePicture = profilePicture;
+
     //this.active = false;//the user will be active after email validation
     //this.email = null;//still working on email validation
-    
+
   }
 
   /** Returns the ID of this User. */
@@ -52,12 +60,11 @@ public class User {
     return id;
   }
 
-  
   /** Returns the username of this User. */
   public String getName() {
     return name;
   }
-  
+
   /**
    * Returns the password of this User.
    */
@@ -68,5 +75,22 @@ public class User {
   /** Returns the creation time of this User. */
   public Instant getCreationTime() {
     return creation;
+  }
+
+  /** Returns the about me of this User. */
+  public String getAboutMe() {
+    return aboutMe;
+  }
+
+  /** Returns the profile picture src of this User. */
+  public String getProfilePic() {
+    return profilePicture;
+  }
+
+  // only allow user to update password, aboutMe, and profilePicture
+  public void updateUser(String password, String aboutMe, String profilePicture) {
+    this.hashedPassword = password;
+    this.aboutMe = aboutMe;
+    this.profilePicture = profilePicture;
   }
 }

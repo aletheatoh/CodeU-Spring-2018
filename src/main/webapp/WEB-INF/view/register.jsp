@@ -14,7 +14,7 @@
      if (request.getSession().getAttribute("user") != null) {
  %>
 	<a>Hello <%=request.getSession().getAttribute("user")%>!
-	</a> 
+	</a>
 	<a href="/Logout">Log Out</a><%
      }
      else {
@@ -32,8 +32,8 @@
 		<%
 		    }
 		%>
-		
-		<form action="/register" method="POST">
+
+		<form action="/register" method="POST" enctype="multipart/form-data">
 		<div class = "row">
 			<div class = "col-label"><label for="username">Username: </label> </div>
 			<div class = "col-input"><input type="text" name="username" id="username" required> </div>
@@ -48,15 +48,15 @@
 	  				<p id="number" class="invalid">A <b>number</b></p>
 	  				<p id="length" class="invalid">Minimum <b>8 characters</b></p>
 			</div>
-			
+
 			</div>
-			
+
 		</div>
-		
-  		
+
+
 		<div class = "row">
 			<div class = "col-label"><label for="question1">Security Question 1:</label> </div>
-				<div class = "col-input"> 
+				<div class = "col-input">
 					<select id="question1" name="question1">
 						<option selected disabled>Choose a security question</option>
 	         		 	<option value="2kiss">What was the name of the boy/girl you had your second kiss with?</option>
@@ -74,7 +74,7 @@
 		</div>
 		<div class = "row">
 			<div class = "col-label"><label for="question2">Security Question 2:</label> </div>
-				<div class = "col-input"> 
+				<div class = "col-input">
 					<select id="question2" name="question2">
 						<option selected disabled>Choose a security question</option>
 	         		 	<option value="2kiss">What was the name of the boy/girl you had your second kiss with?</option>
@@ -90,15 +90,28 @@
 			<div class = "col-label"><label for="answer2">Answer: </label> </div>
 			<div class = "col-input"><input type="text" name="answer2" id="answer2" required> </div>
 		</div>
+
+		<label>Upload your profile picture</label>
+		<br/>
+		<input id="fileupload" type="file" name="profilePic" accept=".jpg, .jpeg, .png">
+		<br/>
+		<b>Live Preview</b>
+		<br/>
+		<img id="myImg" style="width:190px;"src="#" alt="your image"/>
+		<br/>
+		<label>Write a Bio</label>
+		<textarea type="text" name="aboutme"></textarea>
+		<br/>
+
 		<div class = "row">
 			<button type="submit">Submit</button>
 		</div>
 		</form>
-		
+
 		</div>
-		
+
 	<script>
-	
+
 	var myInput = document.getElementById("password");
 	var letter = document.getElementById("letter");
 	var capital = document.getElementById("capital");
@@ -108,7 +121,7 @@
 	var question1 = document.getElementById("question1");
 	var question2 = document.getElementById("question2");
 	var previousSelectIndex =0;//keep track of the previous selection
-	
+
 	//disable the user selection so that user cannot choose 1 question for both security questions
 	question1.onchange = function()
 	{
@@ -121,12 +134,12 @@
 		question2.options[selectedIndex].disabled = true;
         previousSelectIndex = selectedIndex;
 	}
-	
+
 	// When the user clicks on the password field, show the message box
 	myInput.onfocus = function() {
     document.getElementById("message").style.display = "block";
 	}
-	
+
 	// When the user clicks outside of the password field, hide the message box
 	myInput.onblur = function() {
     document.getElementById("message").style.display = "none";
@@ -136,17 +149,17 @@
 	myInput.onkeyup = function() {
  	 // Validate lowercase letters
   	var lowerCaseLetters = /[a-z]/g;
-  	if(myInput.value.match(lowerCaseLetters)) {  
+  	if(myInput.value.match(lowerCaseLetters)) {
     letter.classList.remove("invalid");
     letter.classList.add("valid");
   	} else {
     letter.classList.remove("valid");
     letter.classList.add("invalid");
   	}
-  
+
   	// Validate capital letters
   	var upperCaseLetters = /[A-Z]/g;
-  	if(myInput.value.match(upperCaseLetters)) {  
+  	if(myInput.value.match(upperCaseLetters)) {
     capital.classList.remove("invalid");
     capital.classList.add("valid");
  	 } else {
@@ -154,16 +167,35 @@
     capital.classList.add("invalid");
   	}
 
+
+<script language="javascript" type="text/javascript">
+$(function () {
+    $(":file").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+});
+
+function imageIsLoaded(e) {
+    $('#myImg').attr('src', e.target.result);
+};
+
+</script>
+
+
   	// Validate numbers
   	var numbers = /[0-9]/g;
-  	if(myInput.value.match(numbers)) {  
+  	if(myInput.value.match(numbers)) {
     number.classList.remove("invalid");
     number.classList.add("valid");
   	} else {
     number.classList.remove("valid");
     number.classList.add("invalid");
   	}
-  
+
   // Validate length
   if(myInput.value.length >= 8) {
     length.classList.remove("invalid");
@@ -174,5 +206,6 @@
   }
 }
 	</script>
+>>>>>>> a3e8322f0df3bd3c3b81a48a9f89ce3758cca903
 </body>
 </html>

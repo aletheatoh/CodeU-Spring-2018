@@ -35,13 +35,16 @@ public class RegisterServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+
+		String profilePic = request.getParameter("profilePic");
+		String aboutme = request.getParameter("aboutme");
 		String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
 		//String question1 = request.getParameter("question1");
 		//String answer1 =  request.getParameter("answer1");
 		//String question2 =  request.getParameter("question2");
 		//String answer2 =  request.getParameter("answer2");
-		
-		
+
+
 
 		if (!username.matches("[\\w*\\s]*")) {
 			request.setAttribute("error", "Please enter only letters, numbers, and spaces.");
@@ -60,16 +63,16 @@ public class RegisterServlet extends HttpServlet {
            // request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
            // return;
         //}
-		
+
 		//if (!answer2.matches("[\\w*\\s]*")) {
           //  request.setAttribute("error", "Please enter only letters, numbers, and spaces.");
             //request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
             //return;
         //}
-        
-		
-		User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now());
-		
+
+
+		User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now(), aboutme, profilePic);
+
 		//I am still working on email validation so this part is incomplete
 		//try {
           //  EmailValidate.sendEmailRegistrationLink(user.getName(), user.getEmail(), null);
@@ -78,6 +81,7 @@ public class RegisterServlet extends HttpServlet {
             // TODO Auto-generated catch block
           //  e.printStackTrace();
         //}
+
 		userStore.addUser(user);
 		response.sendRedirect("/login");
 	}
