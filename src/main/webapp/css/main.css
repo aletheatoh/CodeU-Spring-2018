@@ -56,3 +56,8 @@ input {
 button {
   font-size: 18px;
 }
+
+#confirm {
+	display: inline-block;
+	left-padding: 50px;
+}

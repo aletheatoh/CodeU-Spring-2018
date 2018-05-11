@@ -14,8 +14,10 @@
      if (request.getSession().getAttribute("user") != null) {
  %>
 	<a>Hello <%=request.getSession().getAttribute("user")%>!
-	</a>
-	<a href="/Logout">Log Out</a><%
+
+	</a> 
+	<a href="/logout">Log Out</a><%
+	
      }
      else {
  %> <a href="/login">Login</a> <%
@@ -40,7 +42,7 @@
 		</div>
 		<div class = "row">
 			<div class = "col-label"><label for="password">Password:</label> </div>
-			<div class = "col-input"><input type="text" name="password" id="password"required>
+			<div class = "col-input"><input type="password" name="password" id="password"required>
 				<div id="message">
 					<p>Password requirement:</p>
 	  				<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -86,6 +88,7 @@
 	        		</select>
 	        	</div>
 			</div>
+			
 		<div class = "row">
 			<div class = "col-label"><label for="answer2">Answer: </label> </div>
 			<div class = "col-input"><input type="text" name="answer2" id="answer2" required> </div>
@@ -167,25 +170,6 @@
     capital.classList.add("invalid");
   	}
 
-
-<script language="javascript" type="text/javascript">
-$(function () {
-    $(":file").change(function () {
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-            reader.onload = imageIsLoaded;
-            reader.readAsDataURL(this.files[0]);
-        }
-    });
-});
-
-function imageIsLoaded(e) {
-    $('#myImg').attr('src', e.target.result);
-};
-
-</script>
-
-
   	// Validate numbers
   	var numbers = /[0-9]/g;
   	if(myInput.value.match(numbers)) {
@@ -205,7 +189,10 @@ function imageIsLoaded(e) {
     length.classList.add("invalid");
   }
 }
+	
+
+
+
 	</script>
->>>>>>> a3e8322f0df3bd3c3b81a48a9f89ce3758cca903
 </body>
 </html>

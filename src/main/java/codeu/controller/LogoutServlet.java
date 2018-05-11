@@ -57,8 +57,14 @@
        */
       @Override
       public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-            request.getSession().setAttribute("user", null);
-            response.sendRedirect("/index.jsp");
+          if(request.getParameter("button").equals("yes"))
+              { 
+              request.getSession().setAttribute("user", null);
+              response.sendRedirect("/index.jsp");
+              }
+          else {
+              request.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(request, response);
+          }
     }
 
 }

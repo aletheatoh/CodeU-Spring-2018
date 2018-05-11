@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class SecurityQuestion {
 
-    public static ArrayList<String> questions;
     private final String value;
     private final String answer;
     
@@ -16,24 +15,19 @@ public class SecurityQuestion {
         
     }
     
-    static void addQuestion(String question)
-    {
-        questions.add(question);
-    }
-    
     public boolean checkAnswer(String guess)
     {
-        return guess.trim().equalsIgnoreCase(this.answer.trim());
+        return guess.equalsIgnoreCase(this.answer);
         
     }
-    
-    static void deleteQuestion(String question)
+
+    public String getValue()
     {
-        questions.remove(question);
+        return this.value;
     }
     
-    static void deleteQuestion(int questionIndex)
+    public String getAnswer()
     {
-        questions.remove(questionIndex);
+        return this.answer;
     }
 }

@@ -33,20 +33,31 @@
     <% } %>
     <a href="/about.jsp">About</a>
   </nav>
-
+	<%
+	if("successful".equalsIgnoreCase((String) session.getAttribute("reset"))){
+	%>
+	<script>alert('Your password have been successfully reset. Please log in again! ');</script>
+	<% }
+	else if("successful".equalsIgnoreCase((String) session.getAttribute("registered")))
+	{
+	 %>
+	    <script>"alert('Registerd Successfully! Please log in to start using the webchat!');</script>
+	<%}
+	%>
   <div id="container">
     <h1>Login</h1>
 
     <% if(request.getAttribute("error") != null){ %>
         <h2 style="color:red"><%= request.getAttribute("error") %></h2>
     <% } %>
-
+	
     <form action="/login" method="POST">
       <label for="username">Username: </label>
       <input type="text" name="username" id="username">
       <br></br>
       <label for="password">Password: </label>
       <input type="password" name="password" id="password">
+      <a href = "/forgotpass">Forgot Password?</a>
       <br></br>
       <button type="submit">Login</button>
     </form>
