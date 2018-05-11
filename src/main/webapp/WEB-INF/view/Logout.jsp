@@ -31,8 +31,8 @@
     <form action="/logout" method="POST">
       <h4>Do you want to log out of the web chat?</h4>
       <div id="confirm">
-      <button type="submit">Yes</button>
-      <button type="submit">No</button>
+      <button type="submit" name ="button" value ="yes">Yes</button>
+      <button type="submit" name = "button" value = "no">No</button>
       </div>
     </form>
   </div>

@@ -51,7 +51,7 @@
 		
   		<div class = "row">
 			<div class = "col-label"><label for="password">Confirm New Password:</label> </div>
-			<div class = "col-input"><input type="password" name="confirm_password" id="confirm_password"required>
+			<div class = "col-input"><input type="password" name="confirm_password" id="confirm_password"required><img id="symbol" src="<%=request.getContextPath()%>/images/tickmark.png" alt="Tick mark" width="30" height="20">
 			</div>
 			
 			</div>
@@ -76,15 +76,13 @@
 		//Check if the confirm password match with the first one
 		if(confirm.value.localeCompare(myInput.value)==0)
 			{
-				confirm.classList.add("confirmed");
-				confirm.classList.remove("different");
+				document.getElementById("symbol").src = "<%=request.getContextPath()%>/images/tickmark.png";
 				document.getElementById("submit").disabled= false;
 				
 			}
 		else
 			{
-				confirm.classList.remove("confirmed");
-				confirm.classList.add("different");
+				document.getElementById("symbol").src = "<%=request.getContextPath()%>/images/xicon.png";
 				document.getElementById("submit").disabled= true;
 				
 			}

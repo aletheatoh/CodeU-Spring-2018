@@ -15,7 +15,7 @@
  %>
 	<a>Hello <%=request.getSession().getAttribute("user")%>!
 	</a> 
-	<a href="/Logout">Log Out</a><%
+	<a href="/logout">Log Out</a><%
      }
      else {
  %> <a href="/login">Login</a> <%
@@ -86,6 +86,7 @@
 	        		</select>
 	        	</div>
 			</div>
+			
 		<div class = "row">
 			<div class = "col-label"><label for="answer2">Answer: </label> </div>
 			<div class = "col-input"><input type="text" name="answer2" id="answer2" required> </div>
@@ -173,6 +174,24 @@
     length.classList.add("invalid");
   }
 }
+	
+	$(function () {
+	    $(":file").change(function () {
+	        if (this.files && this.files[0]) {
+	            var reader = new FileReader();
+	            reader.onload = imageIsLoaded;
+	            reader.readAsDataURL(this.files[0]);
+	        }
+	    });
+	});
+
+	function imageIsLoaded(e) {
+	    $('#myImg').attr('src', e.target.result);
+	}
+		}
+
+
+
 	</script>
 </body>
 </html>

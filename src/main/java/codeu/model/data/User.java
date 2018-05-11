@@ -29,6 +29,8 @@ public class User {
   //private String email;
   private ArrayList<SecurityQuestion> securityAnswers;
   private Instant passReset;
+  private String aboutMe = "No Bio Available"; // default value
+  private String profilePicture;
   
   /**
    * Constructs a new User.
@@ -69,30 +71,62 @@ public class User {
     return creation;
   }
   
+  /** Save user answers to security questions */
   public void answerSecurityQuestions(String questionValue, String answer)
   {
       this.securityAnswers.add(new SecurityQuestion(questionValue, answer));
   }
   
+  /**
+   * get the question-answer pair for the user 
+   * @return the questions and answers of the user
+   */
   public ArrayList<SecurityQuestion> getQuestionAnswer()
   {
       return this.securityAnswers;
   }
   
-  
+  /**
+   * Reset the password of the user
+   * @param newPassword
+   */
   public void resetPass(String newPassword)
   {
       this.hashedPassword=newPassword;
    
   }
   
+  /**
+   * get the last time user reset his/her password
+   * @return
+   */
   public Instant getResetPassTime()
   {
       return this.passReset;
   }
-  
+  /**
+   * record the last time user reset his/her password
+   */
   public  void setResetPassTime()
   {
       this.passReset = Instant.now();
+  }
+  
+
+  /** Returns the about me of this User. */
+  public String getAboutMe() {
+    return aboutMe;
+  }
+
+  /** Returns the profile picture src of this User. */
+  public String getProfilePic() {
+    return profilePicture;
+  }
+
+  // only allow user to update password, aboutMe, and profilePicture
+  public void updateUser(String password, String aboutMe, String profilePicture) {
+    this.hashedPassword = password;
+    this.aboutMe = aboutMe;
+    this.profilePicture = profilePicture;
   }
 }
