@@ -62,7 +62,7 @@ public class LoginServletTest {
     Mockito.when(mockRequest.getParameter("password")).thenReturn("right password");
 
     String hashedPassword = BCrypt.hashpw("right password", BCrypt.gensalt());
-    User mockUser = new User(UUID.randomUUID(), "test username", hashedPassword, Instant.now());
+    User mockUser = new User(UUID.randomUUID(), "test username", hashedPassword, Instant.now(), "test about me", "test profile pic");
 
     UserStore mockUserStore = Mockito.mock(UserStore.class);
     loginServlet.setUserStore(mockUserStore);
@@ -86,7 +86,7 @@ public class LoginServletTest {
     Mockito.when(mockRequest.getParameter("password")).thenReturn("wrong password");
 
     String hashedPassword = BCrypt.hashpw("right password", BCrypt.gensalt());
-    User mockUser = new User(UUID.randomUUID(), "test username", hashedPassword, Instant.now());
+    User mockUser = new User(UUID.randomUUID(), "test username", hashedPassword, Instant.now(), "test about me", "test profile pic");
 
     UserStore mockUserStore = Mockito.mock(UserStore.class);
     loginServlet.setUserStore(mockUserStore);

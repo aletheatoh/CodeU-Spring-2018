@@ -112,6 +112,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
       </ul>
     <%
     }
+
     }
     %>
     <hr/>

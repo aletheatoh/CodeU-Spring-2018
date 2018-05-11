@@ -21,10 +21,12 @@ import java.util.UUID;
 
 /** Class representing a registered user. */
 public class User {
+  // only allow user to update password, aboutMe, and profilePicture
   private final UUID id;
   private final String name;
   private final Instant creation;
   private String hashedPassword;
+
   //private boolean active;
   //private String email;
   private ArrayList<SecurityQuestion> securityAnswers;
@@ -32,6 +34,15 @@ public class User {
   private String aboutMe = "No Bio Available"; // default value
   private String profilePicture;
   
+
+
+  private String aboutMe = "No Bio Available"; // default value
+  private String profilePicture;
+  //private boolean active;
+  //private String email;
+  //private ArrayList<SecurityQuestion> securityQuestions;//still working on storing questions to database
+
+
   /**
    * Constructs a new User.
    *
@@ -40,12 +51,22 @@ public class User {
    * @param password the password of this User
    * @param creation the creation time of this User
    */
-  public User(UUID id, String name, String password, Instant creation) {
+  public User(UUID id, String name, String password, Instant creation, String aboutMe, String profilePicture) {
     this.id = id;
     this.name = name;
     this.hashedPassword = password;
+
     this.creation = creation;    
     this.securityAnswers = new ArrayList<SecurityQuestion>();
+
+
+    this.aboutMe = aboutMe;
+    this.profilePicture = profilePicture;
+
+    //this.active = false;//the user will be active after email validation
+    //this.email = null;//still working on email validation
+
+
   }
 
   /** Returns the ID of this User. */
@@ -53,12 +74,11 @@ public class User {
     return id;
   }
 
-  
   /** Returns the username of this User. */
   public String getName() {
     return name;
   }
-  
+
   /**
    * Returns the password of this User.
    */
@@ -70,6 +90,7 @@ public class User {
   public Instant getCreationTime() {
     return creation;
   }
+
   
   /** Save user answers to security questions */
   public void answerSecurityQuestions(String questionValue, String answer)
@@ -112,6 +133,7 @@ public class User {
       this.passReset = Instant.now();
   }
   
+
 
   /** Returns the about me of this User. */
   public String getAboutMe() {
