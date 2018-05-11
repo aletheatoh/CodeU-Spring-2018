@@ -18,7 +18,9 @@ import codeu.model.data.Conversation;
 import codeu.model.data.Message;
 import codeu.model.data.User;
 import codeu.model.store.persistence.PersistentDataStore;
+import java.util.HashMap;
 import java.util.List;
+import com.google.appengine.api.datastore.Key;
 
 /**
  * This class is the interface between the application and PersistentDataStore, which handles
@@ -89,6 +91,11 @@ public class PersistentStorageAgent {
     return persistentDataStore.loadMessages();
   }
 
+  public HashMap<String, String> loadSecurityQuestions() throws PersistentDataStoreException {
+      return persistentDataStore.loadSecurityQuestions();
+      
+  }
+  
   /** Write a User object to the Datastore service. */
   public void writeThrough(User user) {
     persistentDataStore.writeThrough(user);
@@ -102,5 +109,11 @@ public class PersistentStorageAgent {
   /** Write a Conversation object to the Datastore service. */
   public void writeThrough(Message message) {
     persistentDataStore.writeThrough(message);
+  }
+  
+  /** Update the password of user after reset */
+  public Key updatePassword(User user, String newPass)
+  {
+     return persistentDataStore.updatePassword(user, newPass );
   }
 }

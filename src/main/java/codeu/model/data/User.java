@@ -16,6 +16,7 @@ package codeu.model.data;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 /** Class representing a registered user. */
@@ -23,11 +24,11 @@ public class User {
   private final UUID id;
   private final String name;
   private final Instant creation;
-  private final String hashedPassword;
+  private String hashedPassword;
   //private boolean active;
   //private String email;
-  //private ArrayList<SecurityQuestion> securityQuestions;//still working on storing questions to database
-
+  private ArrayList<SecurityQuestion> securityAnswers;
+  private Instant passReset;
   
   /**
    * Constructs a new User.
@@ -41,10 +42,8 @@ public class User {
     this.id = id;
     this.name = name;
     this.hashedPassword = password;
-    this.creation = creation;
-    //this.active = false;//the user will be active after email validation
-    //this.email = null;//still working on email validation
-    
+    this.creation = creation;    
+    this.securityAnswers = new ArrayList<SecurityQuestion>();
   }
 
   /** Returns the ID of this User. */
@@ -68,5 +67,32 @@ public class User {
   /** Returns the creation time of this User. */
   public Instant getCreationTime() {
     return creation;
+  }
+  
+  public void answerSecurityQuestions(String questionValue, String answer)
+  {
+      this.securityAnswers.add(new SecurityQuestion(questionValue, answer));
+  }
+  
+  public ArrayList<SecurityQuestion> getQuestionAnswer()
+  {
+      return this.securityAnswers;
+  }
+  
+  
+  public void resetPass(String newPassword)
+  {
+      this.hashedPassword=newPassword;
+   
+  }
+  
+  public Instant getResetPassTime()
+  {
+      return this.passReset;
+  }
+  
+  public  void setResetPassTime()
+  {
+      this.passReset = Instant.now();
   }
 }

@@ -17,17 +17,23 @@ package codeu.model.store.persistence;
 import codeu.model.data.Conversation;
 import codeu.model.data.Message;
 import codeu.model.data.User;
+import codeu.model.store.basic.UserStore;
 import codeu.model.store.persistence.PersistentDataStoreException;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+
+import com.google.appengine.api.datastore.Key;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
+import org.mortbay.log.Log;
 
 /**
  * This class handles all interactions with Google App Engine's Datastore service. On startup it
@@ -38,6 +44,7 @@ public class PersistentDataStore {
 
   // Handle to Google AppEngine's Datastore service.
   private DatastoreService datastore;
+  private static final Logger LOG = Logger.getLogger("DataStoreListener");
 
   /**
    * Constructs a new PersistentDataStore and sets up its state to begin loading objects from the
@@ -70,11 +77,19 @@ public class PersistentDataStore {
           // In a production environment, errors should be very rare. Errors which may
           // occur include network errors, Datastore service errors, authorization errors,
           // database entity definition mismatches, or service mismatches.
+            
           throw new PersistentDataStoreException(e);
         }
+      } 
+      if(securityQuestions.isEmpty())
+      {
+          securityQuestions.put("2kiss", "What was the name of the boy/girl you had your second kiss with?");
+          securityQuestions.put("3teacher", "What was the last name of your third grade teacher?");
+          securityQuestions.put("2pet", "What was the name of your second dog/cat/goldfish/etc?");
+          securityQuestions.put("ny2000", "Where were you New Year's 2000?");
+          securityQuestions.put("1kiss", "Where were you when you had your first kiss?");
+          securityQuestions.put("villian", "Who is your least favorite villian in movie/book/story/life/etc.?");
       }
-      
-      
       return securityQuestions;
   }
   
@@ -99,7 +114,13 @@ public class PersistentDataStore {
         String password = (String)entity.getProperty("password");
         Instant creationTime = Instant.parse((String) entity.getProperty("creation_time"));
         User user = new User(uuid, userName, password, creationTime);
+        if(entity.hasProperty("question1")){
+        user.answerSecurityQuestions((String)entity.getProperty("question1"), (String)entity.getProperty("answer1"));
+        user.answerSecurityQuestions((String)entity.getProperty("question2"), (String)entity.getProperty("answer2"));
+        }
+        UserStore.getInstance().addUserKey(uuid, entity.getKey());
         users.add(user);
+      
       } catch (Exception e) {
         // In a production environment, errors should be very rare. Errors which may
         // occur include network errors, Datastore service errors, authorization errors,
@@ -185,9 +206,32 @@ public class PersistentDataStore {
     userEntity.setProperty("username", user.getName());
     userEntity.setProperty("password", user.getPassword());
     userEntity.setProperty("creation_time", user.getCreationTime().toString());
-    datastore.put(userEntity);
+    userEntity.setProperty("question1", user.getQuestionAnswer().get(0).getValue());
+    userEntity.setProperty("question2", user.getQuestionAnswer().get(1).getValue());
+    userEntity.setProperty("answer1", user.getQuestionAnswer().get(0).getAnswer());
+    userEntity.setProperty("answer2", user.getQuestionAnswer().get(1).getAnswer());
+    
+    Key key = datastore.put(userEntity);
+    UserStore.getInstance().addUserKey(user.getId(), key);
   }
-
+/** Update the password of an entity after reset */
+  public Key updatePassword(User user, String newPass)
+  {
+   try {
+    Entity updateUser = datastore.get(UserStore.getInstance().getUserKey(user.getId()));
+    updateUser.setProperty("password", newPass);
+    LOG.info(String.format(">>> Username: %s, new password: %s", (String)updateUser.getProperty("username"),(String)updateUser.getProperty("password") ));
+    updateUser.setProperty("reset_time", user.getResetPassTime().toString());
+    Key key = datastore.put(updateUser);
+    return key;
+}
+catch (EntityNotFoundException e) {
+   Log.info(String.format(">>>> User %s is not in datastore", user.getName()));
+   return null;
+}  
+   
+  }
+  
   /** Write a Message object to the Datastore service. */
   public void writeThrough(Message message) {
     Entity messageEntity = new Entity("chat-messages");

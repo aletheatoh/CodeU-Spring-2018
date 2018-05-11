@@ -40,7 +40,7 @@
 		</div>
 		<div class = "row">
 			<div class = "col-label"><label for="password">Password:</label> </div>
-			<div class = "col-input"><input type="text" name="password" id="password"required>
+			<div class = "col-input"><input type="password" name="password" id="password"required>
 				<div id="message">
 					<p>Password requirement:</p>
 	  				<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
