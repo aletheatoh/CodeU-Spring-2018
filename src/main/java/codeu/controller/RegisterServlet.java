@@ -46,8 +46,8 @@ public class RegisterServlet extends HttpServlet {
 		String answer1 =  request.getParameter("answer1");
 		String question2 =  request.getParameter("question2");
 		String answer2 =  request.getParameter("answer2");
-		
-		
+
+
 		if (!username.matches("[\\w*\\s]*")) {
 			request.setAttribute("error", "Please enter only letters, numbers, and spaces.");
 			request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
@@ -66,15 +66,15 @@ public class RegisterServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
             return;
         }
-		
+
 		if (!answer2.matches("[\\w*\\s]*")) {
             request.setAttribute("error", "Please enter only letters, numbers, and spaces.");
             request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
             return;
         }
-        
-		
-		User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now());
+
+
+		// User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now());
 
 
 		User user = new User(UUID.randomUUID(), username, passwordHash, Instant.now(), aboutme, profilePic);
@@ -89,12 +89,12 @@ public class RegisterServlet extends HttpServlet {
           //  e.printStackTrace();
 
         //
-		
+
 		/** Save the answers */
 		user.answerSecurityQuestions(question1, answer1);
 		user.answerSecurityQuestions(question2, answer2);
-		
-		 
+
+
 
         //}
 
@@ -113,7 +113,7 @@ public class RegisterServlet extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		setUserStore(UserStore.getInstance());
-		
+
 	}
 
 	/**
