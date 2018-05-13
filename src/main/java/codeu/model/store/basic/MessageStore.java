@@ -112,11 +112,5 @@ public class MessageStore {
   public void setMessages(List<Message> messages) {
     this.messages = messages;
   }
-  
-
-  /** Access the current set of messages known to the application. */
-  public List<Message> getAllMessages() {
-    return messages;
-  }
 
 }
