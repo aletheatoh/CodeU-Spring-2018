@@ -26,6 +26,7 @@
     <a href="/conversations">Conversations</a>
     <% if(request.getSession().getAttribute("user") != null){ %>
       <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
+      <a href="/user">Profile</a>
       <a href="/logout">Log Out</a>
     <% } else{ %>
       <a href="/login">Login</a>
@@ -50,7 +51,7 @@
     <% if(request.getAttribute("error") != null){ %>
         <h2 style="color:red"><%= request.getAttribute("error") %></h2>
     <% } %>
-	
+
     <form action="/login" method="POST">
       <label for="username">Username: </label>
       <input type="text" name="username" id="username">

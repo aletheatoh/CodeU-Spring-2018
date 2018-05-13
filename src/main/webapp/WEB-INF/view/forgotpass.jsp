@@ -14,8 +14,9 @@
      if (request.getSession().getAttribute("user") != null) {
  %>
 	<a>Hello <%=request.getSession().getAttribute("user")%>!
-	</a> 
-	<a href="/Logout">Log Out</a><%
+	</a>
+  <a href="/user">Profile</a>
+  <a href="/logout">Log Out</a><%
      }
      else {
  %> <a href="/login">Login</a> <%
@@ -32,7 +33,7 @@
 		<%
 		    }
 		%>
-		
+
 		<form action="/forgotpass" method="POST">
 		<%
 			if (request.getAttribute("validUser")==null) {
@@ -41,7 +42,7 @@
 			<div class = "col-label"><label for="username">Username: </label> </div>
 			<div class = "col-input"><input type="text" name="username" id="username" required> </div>
 		</div>
-		
+
 		<div class = "row">
 			<button type="submit" name="button" value = "checkUsername">Check Username</button>
 		</div>
@@ -51,7 +52,7 @@
 		  		%>
 		<div class = "row">
 			<div class = "col-label"><label for="question1">Security Question 1:</label> </div>
-				<div class = "col-input"> 
+				<div class = "col-input">
 					<h4><%=request.getAttribute("question1")%></h4>
 	        	</div>
 			</div>
@@ -61,7 +62,7 @@
 		</div>
 		<div class = "row">
 			<div class = "col-label"><label for="question1">Security Question 1:</label> </div>
-				<div class = "col-input"> 
+				<div class = "col-input">
 					<h4><%=request.getAttribute("question2")%></h4>
 	        	</div>
 			</div>
@@ -76,8 +77,8 @@
 			}
 			%>
 		</form>
-		
+
 		</div>
-		
+
 </body>
 </html>
