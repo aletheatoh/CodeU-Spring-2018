@@ -30,6 +30,8 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
   <title>Conversations</title>
   <link rel="stylesheet" href="/css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Delius+Swash+Caps" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 <body>
@@ -108,7 +110,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
     <%
       for(Message message : messages){
     %>
-    <% if(message.getAuthorId() == request.getSession().getAttribute("user_id")){ %>
+    <% if(message.getAuthorId() === request.getSession().getAttribute("user_id")){ %>
       <li><b><%= message.getCreationTime()%>:</b> <%= message.getContent()%></li>
     <% } %>
 

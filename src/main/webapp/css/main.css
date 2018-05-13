@@ -15,7 +15,7 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
   line-height: 1.6;
   font-size: 18px;
   line-height: 1.6;
@@ -55,8 +55,8 @@ h1 {
 }
 
 #edit-profile-container {
-  border: 2px solid #4CAF50;
-  width: 600px;
+  border: 2px solid #64DD17;
+  width: 650px;
   margin: 0 auto;
 }
 
@@ -71,7 +71,11 @@ input {
 
 button {
   font-size: 18px;
+  color: #FFF;
+  background-color: #FF5722;
+  font-weight: bold;
 }
+
 
 #confirm {
 	display: inline-block;
@@ -86,4 +90,5 @@ button {
 #profile-pic-profile {
   width: 250px;
   border-radius: 50%;
+  padding: 5px;
 }
