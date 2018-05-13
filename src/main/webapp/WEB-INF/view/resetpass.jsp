@@ -23,7 +23,7 @@
  %> </nav>
 
 	<div id="container">
-		<h1 id ="formTitle">Register</h1>
+		<h1 id ="formTitle">Reset Password</h1>
 
 		<%
 		    if (request.getAttribute("error") != null) {

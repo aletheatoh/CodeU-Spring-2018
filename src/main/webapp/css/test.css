@@ -1,0 +1,103 @@
+button {
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  margin: 1em;
+  padding: 5em 10em 5em 10em;
+  box-shadow: inset 0 0 0 2px #f45e61;
+  color: #f45e61;
+  font-size: inherit;
+  font-weight: 700;
+  position: relative;
+  vertical-align: middle;
+}
+button::before, button::after {
+  box-sizing: inherit;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.spin {
+  width: 10em;
+  height: 10em;
+  padding: 0;
+}
+.spin:hover {
+  color: #0eb7da;
+}
+.spin::before, .spin::after {
+  top: 0;
+  left: 0;
+}
+.spin::before {
+  border: 2px solid transparent;
+}
+.spin:hover::before {
+  border-top-color: #0eb7da;
+  border-right-color: #0eb7da;
+  border-bottom-color: #0eb7da;
+  transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
+}
+.spin::after {
+  border: 0 solid transparent;
+}
+.spin:hover::after {
+  border-top: 2px solid #0eb7da;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  transform: rotate(270deg);
+  transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s;
+}
+.thick {
+  color: #f45e61;
+}
+.thick:hover {
+  color: #fff;
+  font-weight: 700;
+}
+.thick::before {
+  border: 2.5em solid transparent;
+  z-index: -1;
+}
+.thick::after {
+  mix-blend-mode: color-dodge;
+  z-index: -1;
+}
+.thick:hover::before {
+  background: #f45e61;
+  border-top-color: #f45e61;
+  border-right-color: #f45e61;
+  border-bottom-color: #f45e61;
+  transition: background 0s linear 0.4s, border-top-color 0.15s linear, border-right-color 0.15s linear 0.15s, border-bottom-color 0.15s linear 0.25s;
+}
+.thick:hover::after {
+  border-top: 2.5em solid #f45e61;
+  border-left-width: 2.5em;
+  border-right-width: 2.5em;
+}
+/* Page styling */
+html {
+  background: #fefefe;
+}
+body {
+   background-image: url('/images/1b252559a322b05d78b700149e976c3b.jpg');
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: auto;
+   overflow: scroll;
+  color: #4b507a;
+  font: 300 16px Lato, sans-serif;
+  margin: 1em auto;
+  max-width: 36em;
+  padding: 1em 1em 2em;
+  text-align: center;
+}
+.navigation {
+  isolation: isolate;
+}
+h1 {
+  font-weight: 300;
+  font-size: 2.5em;
+}

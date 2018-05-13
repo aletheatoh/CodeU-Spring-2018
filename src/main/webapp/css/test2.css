@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  background-image: url('/images/615161-artwork-blue-background-fractalius-iron-man-marvel-comics-minimalistic-simple-background-superheroes.jpg');
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: auto;
+   overflow: scroll;
+  
+}
+
+#guide {
+	display: none;
+	position: relative;
+}
+
+.nav {
+	position: absolute;
+	left:200px;
+}
+
+
+
+.button-container-3 {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 8vh;
+  overflow: hidden;
+  border: 1px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  transition: 0.5s;
+  letter-spacing: 1px;
+}
+.button-container-3 button {
+  width: 101%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 1px;
+  background: #000;
+  -webkit-mask: url("https://github.com/robin-dela/css-mask-animation/blob/master/img/nature-sprite-2.png?raw=true");
+  mask: url("https://github.com/robin-dela/css-mask-animation/blob/master/img/nature-sprite-2.png?raw=true");
+  -webkit-mask-size: 7100% 100%;
+  mask-size: 7100% 100%;
+  border: none;
+  color: #E8E8E8;
+  cursor: pointer;
+  -webkit-animation: ani2 0.7s steps(70) forwards;
+  animation: ani2 0.7s steps(70) forwards;
+}
+.button-container-3 button:hover {
+  -webkit-animation: ani 0.7s steps(70) forwards;
+  animation: ani 0.7s steps(70) forwards;
+}
+
+.mas {
+  position: absolute;
+  color: #E8E8E8;
+  text-align: center;
+  width: 101%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  position: absolute;
+  font-size: 20px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+@-webkit-keyframes ani {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+@keyframes ani {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+@-webkit-keyframes ani2 {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+@keyframes ani2 {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+a {
+  color: #E8E8E8;
+}
+
+.btn {
+  width: 200px;
+  height: 50px;
+  margin: auto;
+  border-radius: 6px 22px;
+  transition: all .2s ease;
+  box-sizing: border-box;
+  text-align: center;
+  color: rgb(236, 240, 241);
+  text-transform: lowercase;
+  letter-spacing: 2px;
+  padding: 14px 0;
+  overflow: hidden;
+}
+
+
+.btn:hover {
+  border-radius: 22px 6px;
+  background: rgb(46, 204, 113);
+  cursor: pointer;
+  height: 250px;
+}
+
+#message {
+	font-size: 15px;
+}
+.btn--stars {
+  background: black;
+}
+
+.btn--stars:hover {
+  background: black;
+  padding: 15px;
+}
+
+.fa-star {
+  position: relative;
+  transition: all .2s ease;
+  top: -60px;
+}
+
+.btn:hover .fa-star {
+  top: -240px;
+}
+
+.btn:hover .fa-star.star-one, .btn:hover .fa-star.star-three {
+  top: -246px;
+}
+
+.fa-star.star-three {
+  transition-delay: .14s;
+  font-size: 14px;
+}
+
+.fa-star.star-two {
+  transition-delay: .07s;
+}
+
+.fa-star.star-one {
+  font-size: 14px;
+}
+
+.section {
+  padding: 120px 0;
+}
+

@@ -17,11 +17,11 @@
 <html>
 <head>
   <title>CodeU Chat App</title>
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 
-  <nav>
+  <div>
     <a id="navTitle" href="/">CodeU Chat App</a>
     <a href="/conversations">Conversations</a>
     <% if(request.getSession().getAttribute("user") != null){ %>
@@ -33,33 +33,8 @@
     <% } %>
     <a href="/about.jsp">About</a>
     <a href="/testdata">Load Test Data</a>
-  </nav>
-
-  <div id="container">
-    <div
-      style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
-
-      <h1>CodeU Chat App</h1>
-      <h2>Welcome!</h2>
-      <h2>Say hi to our 5 incredibly awesome creators:</h2>
-	<ul>
-		<li>Henry: Keeping his day job for now. <i>Carnegie Hall will have to wait.</i></li>
-    <img src="<%=request.getContextPath()%>/images/playing-piano-in-a-band.jpg" alt="The Pulpit Rock" width="300" height="200">
-		<li>Liz: an artistic computer scientist fueled by coffee :></li>
-		<li>Erin: lover of Java (coffee and language)</li>
-		<li>Sergio: loves making pizza</li>
-		<li>Alethea: a big dreamer and a low-key belieber.</li>
-	</ul>
-      <ul>
-        <li><a href="/login">Login</a> to get started.</li>
-        <li>Go to the <a href="/conversations">conversations</a> page to
-            create or join a conversation.</li>
-        <li>View the <a href="/about.jsp">about</a> page to learn more about the
-            project.</li>
-        <li>You can <a href="/testdata">load test data</a> to fill the site with
-            example data.</li>
-      </ul>
-    </div>
   </div>
+
+ 
 </body>
 </html>

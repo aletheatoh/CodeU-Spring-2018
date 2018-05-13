@@ -18,7 +18,6 @@ package codeu.controller;
 import codeu.model.data.SecurityQuestion;
 import codeu.model.data.User;
 import codeu.model.store.basic.UserStore;
-import codeu.model.store.persistence.PersistentDataStoreException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,6 +46,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         ServletException {
         request.getRequestDispatcher("/WEB-INF/view/forgotpass.jsp").forward(
             request, response);
+        LOG.info(String.format(">>> content path %s", request.getContextPath()));
     }
 
 
@@ -87,16 +87,11 @@ public class ForgotPasswordServlet extends HttpServlet {
         if(action.equals("answers")){
         String answer1 = request.getParameter("answer1");
         String answer2 = request.getParameter("answer2");
-        LOG.info(String.format(">>>> answer 1 is %s--", answer1));
-        LOG.info(String.format(">>>> answer 2 is %s--", answer2));
         
         
         ArrayList<SecurityQuestion> answers = user.getQuestionAnswer();
-        LOG.info(String.format(">>>> comparing to answer 1 is %s--", answers.get(0).getAnswer()));
-        LOG.info(String.format(">>>> comparing to answer 2 is %s--", answers.get(1).getAnswer()));
         if ((answers.get(0).checkAnswer(answer1)) & (answers.get(1).checkAnswer(
             answer2))) {
-            LOG.info("Got it!");
             request.setAttribute("user", request.getAttribute("user"));
             LOG.info(String.format(">>> username is in forgot request: %s",(String)request.getAttribute("user")));
             LOG.info(String.format(">>> username is forgot session : %s",(String)request.getSession(false).getAttribute("user")));
