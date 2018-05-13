@@ -15,7 +15,7 @@
 
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.6;
   font-size: 18px;
   line-height: 1.6;
@@ -46,7 +46,17 @@ nav a {
 }
 
 h1 {
-  color: #757575;
+  color: #7B1FA2;
+  font-weight: 200;
+}
+
+#profile-page-title {
+  text-align: center;
+}
+
+#username-title {
+  font-family: 'Delius Swash Caps';
+  color: #E91E63;
 }
 
 input {
@@ -60,4 +70,14 @@ button {
 #confirm {
 	display: inline-block;
 	left-padding: 50px;
+}
+
+.imagearea {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#profile-pic-profile {
+  width: 200px;
+  border-radius: 50%;
 }

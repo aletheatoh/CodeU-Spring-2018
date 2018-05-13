@@ -29,6 +29,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 <head>
   <title>Conversations</title>
   <link rel="stylesheet" href="/css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Delius+Swash+Caps" rel="stylesheet">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 <body>
@@ -56,19 +57,16 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
     <% if(request.getSession().getAttribute("user") != null){ %>
 
       <%-- put user profile here --%>
-      <h1><%= request.getSession().getAttribute("user")%>'s Profile Page</h1>
+      <h1 id="profile-page-title"><span id="username-title"><%= request.getSession().getAttribute("user")%>'s</span> Profile Page</h1>
 
       <hr/>
-
-      <h3>About <%= request.getSession().getAttribute("user")%></h3>
-      <p></p>
 
       <h4>Edit your Profile Details (only you can see this)</h4>
       <form action="/user" method="POST">
           <div class="form-group">
-          <label>Change your profile picture</label><input type="file" name="profilePic" accept="image/*">
+          <label>Change your profile picture</label><input class="profilePic" type="file" name="profilePic" accept="image/*">
           <br/>
-          <p><%= request.getAttribute("production")%></p>
+          <div class="imagearea"></div>
           <label>Change your About Me</label>
           <br/>
           <textarea type="text" name="aboutme"><%= request.getAttribute("aboutme")%></textarea>
@@ -78,6 +76,9 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
       </form>
       <hr/>
 
+      <div id="location">
+        <b>Your Current Location</b>:
+      </div>
       <button id="location-button">Check In</button>
       <div id="output"></div>
 
@@ -87,9 +88,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
       <h3><%= request.getSession().getAttribute("user")%>'s Sent Messages</h3>
 
-    <% } %>
-
-    <% if(request.getSession().getAttribute("user") == null){ %>
+    <% } else{ %>
       <h1>You're not authorized to view this page</h1>
     <% } %>
 
@@ -120,15 +119,47 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
   </div>
 <script>
 
+  var img = new Image();
+  img.src = localStorage.theImage;
+  img.id = "profile-pic-profile";
+
+  $('.imagearea').html(img);
+
+  $("body").on("change",".profilePic",function(){
+      //Equivalent of getElementById
+      var fileInput = $(this)[0];//returns a HTML DOM object by putting the [0] since it's really an associative array.
+      var file = fileInput.files[0]; //there is only '1' file since they are not multiple type.
+
+      var reader = new FileReader();
+      reader.onload = function(e) {
+           // Create a new image.
+           var img = new Image();
+
+           img.src = reader.result;
+           img.id = "profile-pic-profile";
+           localStorage.theImage = reader.result; //stores the image to localStorage
+           $(".imagearea").html(img);
+       }
+
+       reader.readAsDataURL(file);//attempts to read the file in question.
+    });
+
+
 $('#location-button').click(function() {
   navigator.geolocation.getCurrentPosition(function(position){
     console.log('works!');
     console.log(position);
-    $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&key=AIzaSyCEpO1YXIeCe8igHrFGb1xHTPjRtKSsgzo", function(data) {
+
+    $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + "1.3193873999999999" + "," + "103.9528409" + "&key=AIzaSyCYzIzHZUMxbmbGWmWNvF6C0Ojzi3XTN1E", function(data) {
       console.log(data["results"][0]["formatted_address"]);
+      var address = data["results"][0]["formatted_address"];
+      $('#location').empty();
+      $('#location').append(`<b>Your Current Location</b>: ${address}`);
     })
+
   });
 });
+
 </script>
 
 </body>
