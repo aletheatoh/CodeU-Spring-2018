@@ -61,12 +61,13 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
       <hr/>
 
-      <h4>Edit your Profile Details (only you can see this)</h4>
+    <div class="imagearea"></div>
+    <div id="edit-profile-container">
+      <h4 >Edit your Profile Details (only you can see this)</h4>
       <form action="/user" method="POST">
           <div class="form-group">
           <label>Change your profile picture</label><input class="profilePic" type="file" name="profilePic" accept="image/*">
           <br/>
-          <div class="imagearea"></div>
           <label>Change your About Me</label>
           <br/>
           <textarea type="text" name="aboutme"><%= request.getAttribute("aboutme")%></textarea>
@@ -74,6 +75,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
         <button type="submit">Submit</button>
       </form>
+    </div>
       <hr/>
 
       <div id="location">

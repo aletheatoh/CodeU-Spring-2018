@@ -54,6 +54,12 @@ h1 {
   text-align: center;
 }
 
+#edit-profile-container {
+  border: 2px solid #4CAF50;
+  width: 600px;
+  margin: 0 auto;
+}
+
 #username-title {
   font-family: 'Delius Swash Caps';
   color: #E91E63;
@@ -78,6 +84,6 @@ button {
 }
 
 #profile-pic-profile {
-  width: 200px;
+  width: 250px;
   border-radius: 50%;
 }
