@@ -1,40 +1,85 @@
-<%--
-  Copyright 2017 Google Inc.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
---%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title>CodeU Chat App</title>
-  <link rel="stylesheet" href="/css/index.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/test2.css">
 </head>
 <body>
 
-  <div>
-    <a id="navTitle" href="/">CodeU Chat App</a>
-    <a href="/conversations">Conversations</a>
-    <% if(request.getSession().getAttribute("user") != null){ %>
-      <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-      <a href="/logout">Log Out</a>
-    <% } else{ %>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-    <% } %>
-    <a href="/about.jsp">About</a>
-    <a href="/testdata">Load Test Data</a>
-  </div>
 
+<div class='section section--stars'>
+  <div class='btn btn--stars' id = "start">
+   <p id ="message">Hover me!</p>
+    <div class='stars'>
+      <i class='fa fa-star star-one'></i>
+      <i class='fa fa-star star-two'></i>
+      <i class='fa fa-star star-three'></i>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+<div class="button-container-3">
+ <span class="mas">Home</span>
+	<a id="navTitle" href="/"><button type="button" name="Hover">Home</button></a>
+</div>
+
+<% if(request.getSession().getAttribute("user") != null){ %>
+		<div class="button-container-3">
+ 			<span class="mas"><%= request.getSession().getAttribute("user") %></span>
+			<a  href="/user"><button type="button" name="Hover"><%= request.getSession().getAttribute("user") %></button></a>
+		</div>
+   
+		<div class="button-container-3">
+ 			<span class="mas">Log Out</span>
+			<a  href="/logout"><button type="button" name="Hover">Log Out</button></a>
+		</div>
+		
+		<div class="button-container-3">
+				 <span class="mas">Conversation</span>
+				<a href ="/conversation"><button type="button" name="Hover">Conversation</button></a>
+		</div>
+		
+<% } else{ %>
+		<div class="button-container-3">
+ 			<span class="mas">Register</span>
+			<a href="/register"><button type="button" name="Hover">Register</button></a>
+		</div>
+		
+		<div class="button-container-3">
+ 			<span class="mas">Login</span>
+			<a  href="/login"><button type="button" name="Hover">Login</button></a>
+		</div>
+		
+		
+	
+	 <% } %>
+
+
+
+<div class="button-container-3">
+ <span class="mas">About</span>
+	<a href="/about.jsp"><button type="button" name="Hover">About</button></a>
+</div>
+
+</div>
  
+ <script type="text/javascript">
+ 
+ document.getElementById('start').onmouseover = function() {
+	  document.getElementById("message").innerHTML = "<br>1. Register and login to start using the web chat " +"<br><br>"+" 2. Go to conversation to send messages" +"<br><br>"+" 3. Go to about to know more about the project and our awesome team!";
+  document.getElementById("message").style.fontSize = "10px";
+	}
+
+	document.getElementById('start').onmouseout = function() {
+		document.getElementById("message").innerHTML = "Hover me!";
+   document.getElementById("message").style.fontSize = "15px";
+	}
+	
+	
+ </script>
 </body>
 </html>

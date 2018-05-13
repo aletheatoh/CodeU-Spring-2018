@@ -8,36 +8,29 @@
 }
 
 
-
 body {
   margin: 0;
   font-family: sans-serif;
   line-height: 1.6;
   font-size: 18px;
-  background-image: url('/images/615161-artwork-blue-background-fractalius-iron-man-marvel-comics-minimalistic-simple-background-superheroes.jpg');
+  background-image: url('/images/iron-man-3-wallpaper-191.jpg');
    background-attachment: fixed;
    background-position: center;
    background-repeat: no-repeat;
-   background-size: auto;
+   background-size: cover;
    overflow: scroll;
-  
 }
-
-#guide {
-	display: none;
-	position: relative;
-}
-
 .nav {
 	position: absolute;
 	left:200px;
+	font-weight:bold;
 }
 
 
 
 .button-container-3 {
-  display: inline-block;
-  position: relative;
+  position: relative;   
+  display:inline-block;
   width: 150px;
   height: 50px;
   margin-left: 50px;
@@ -54,7 +47,7 @@ body {
   width: 101%;
   height: 100%;
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 20px;
   letter-spacing: 1px;
   background: #000;
@@ -63,7 +56,7 @@ body {
   -webkit-mask-size: 7100% 100%;
   mask-size: 7100% 100%;
   border: none;
-  color: #E8E8E8;
+  color:  #800000;
   cursor: pointer;
   -webkit-animation: ani2 0.7s steps(70) forwards;
   animation: ani2 0.7s steps(70) forwards;
@@ -75,11 +68,11 @@ body {
 
 .mas {
   position: absolute;
-  color: #E8E8E8;
+  color: black;
   text-align: center;
   width: 101%;
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
+  font-weight: 500;
   position: absolute;
   font-size: 20px;
   margin-top: 12px;
@@ -127,13 +120,13 @@ body {
   }
 }
 a {
-  color: #E8E8E8;
+  color:#990000;
 }
 
 .btn {
   width: 200px;
   height: 50px;
-  margin: auto;
+  margin:auto;
   border-radius: 6px 22px;
   transition: all .2s ease;
   box-sizing: border-box;
@@ -143,26 +136,25 @@ a {
   letter-spacing: 2px;
   padding: 14px 0;
   overflow: hidden;
+  border: 2px solid black;
 }
-
 
 .btn:hover {
   border-radius: 22px 6px;
-  background: rgb(46, 204, 113);
   cursor: pointer;
-  height: 250px;
+  height: 200px;
 }
 
 #message {
 	font-size: 15px;
 }
 .btn--stars {
-  background: black;
+  background: transparent;
 }
 
 .btn--stars:hover {
-  background: black;
-  padding: 15px;
+  background: transparent;
+  padding: 13px;
 }
 
 .fa-star {
@@ -172,11 +164,11 @@ a {
 }
 
 .btn:hover .fa-star {
-  top: -240px;
+  top: -166px;
 }
 
 .btn:hover .fa-star.star-one, .btn:hover .fa-star.star-three {
-  top: -246px;
+  top: -164px;
 }
 
 .fa-star.star-three {
@@ -193,6 +185,6 @@ a {
 }
 
 .section {
-  padding: 120px 0;
+  padding: 230px 0 60px 0;
 }
 

@@ -1,103 +1,192 @@
-button {
-  background: none;
-  border: 0;
-  box-sizing: border-box;
-  margin: 1em;
-  padding: 5em 10em 5em 10em;
-  box-shadow: inset 0 0 0 2px #f45e61;
-  color: #f45e61;
-  font-size: inherit;
-  font-weight: 700;
-  position: relative;
-  vertical-align: middle;
-}
-button::before, button::after {
-  box-sizing: inherit;
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.spin {
-  width: 10em;
-  height: 10em;
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-.spin:hover {
-  color: #0eb7da;
-}
-.spin::before, .spin::after {
-  top: 0;
-  left: 0;
-}
-.spin::before {
-  border: 2px solid transparent;
-}
-.spin:hover::before {
-  border-top-color: #0eb7da;
-  border-right-color: #0eb7da;
-  border-bottom-color: #0eb7da;
-  transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
-}
-.spin::after {
-  border: 0 solid transparent;
-}
-.spin:hover::after {
-  border-top: 2px solid #0eb7da;
-  border-left-width: 2px;
-  border-right-width: 2px;
-  transform: rotate(270deg);
-  transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s;
-}
-.thick {
-  color: #f45e61;
-}
-.thick:hover {
-  color: #fff;
-  font-weight: 700;
-}
-.thick::before {
-  border: 2.5em solid transparent;
-  z-index: -1;
-}
-.thick::after {
-  mix-blend-mode: color-dodge;
-  z-index: -1;
-}
-.thick:hover::before {
-  background: #f45e61;
-  border-top-color: #f45e61;
-  border-right-color: #f45e61;
-  border-bottom-color: #f45e61;
-  transition: background 0s linear 0.4s, border-top-color 0.15s linear, border-right-color 0.15s linear 0.15s, border-bottom-color 0.15s linear 0.25s;
-}
-.thick:hover::after {
-  border-top: 2.5em solid #f45e61;
-  border-left-width: 2.5em;
-  border-right-width: 2.5em;
-}
-/* Page styling */
-html {
-  background: #fefefe;
-}
+
+
 body {
-   background-image: url('/images/1b252559a322b05d78b700149e976c3b.jpg');
+  margin: 0;
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  background-image: url('/images/iron-man-3-wallpaper-191.jpg');
    background-attachment: fixed;
    background-position: center;
    background-repeat: no-repeat;
-   background-size: auto;
+   background-size: cover;
    overflow: scroll;
-  color: #4b507a;
-  font: 300 16px Lato, sans-serif;
-  margin: 1em auto;
-  max-width: 36em;
-  padding: 1em 1em 2em;
-  text-align: center;
 }
-.navigation {
-  isolation: isolate;
+.nav {
+	position: absolute;
+	left:200px;
+	font-weight:bold;
 }
-h1 {
+
+
+
+.button-container-3 {
+  position: relative;   
+  display:inline-block;
+  width: 150px;
+  height: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 8vh;
+  overflow: hidden;
+  border: 1px solid #000;
+  font-family: 'Lato', sans-serif;
   font-weight: 300;
-  font-size: 2.5em;
+  transition: 0.5s;
+  letter-spacing: 1px;
 }
+.button-container-3 button {
+  width: 101%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1px;
+  background: #000;
+  -webkit-mask: url("https://github.com/robin-dela/css-mask-animation/blob/master/img/nature-sprite-2.png?raw=true");
+  mask: url("https://github.com/robin-dela/css-mask-animation/blob/master/img/nature-sprite-2.png?raw=true");
+  -webkit-mask-size: 7100% 100%;
+  mask-size: 7100% 100%;
+  border-radius: 6px 22px;
+  color:  #800000;
+  cursor: pointer;
+  -webkit-animation: ani2 0.7s steps(70) forwards;
+  animation: ani2 0.7s steps(70) forwards;
+}
+.button-container-3 button:hover {
+  -webkit-animation: ani 0.7s steps(70) forwards;
+  animation: ani 0.7s steps(70) forwards;
+}
+
+.mas {
+  position: absolute;
+  color: black;
+  text-align: center;
+  width: 101%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  position: absolute;
+  font-size: 20px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+@-webkit-keyframes ani {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+@keyframes ani {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+@-webkit-keyframes ani2 {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+@keyframes ani2 {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+a {
+  color:#990000;
+}
+
+.btn {
+  width: 200px;
+  height: 50px;
+  margin:auto;
+  border-radius: 6px 22px;
+  transition: all .2s ease;
+  box-sizing: border-box;
+  text-align: center;
+  color: rgb(236, 240, 241);
+  text-transform: lowercase;
+  letter-spacing: 2px;
+  padding: 14px 0;
+  overflow: hidden;
+  border:none;
+  font-weight:500;
+}
+
+.btn:hover {
+  border-radius: 22px 6px;
+  cursor: pointer;
+  height: 200px;  
+  border: 2px solid black;
+}
+
+#message {
+	font-size: 15px;
+}
+.btn--stars {
+  background: transparent;
+}
+
+.btn--stars:hover {
+  background: transparent;
+  padding: 13px;
+}
+
+.fa-star {
+  position: relative;
+  transition: all .2s ease;
+  top: -60px;
+}
+
+.btn:hover .fa-star {
+  top: -166px;
+}
+
+.btn:hover .fa-star.star-one, .btn:hover .fa-star.star-three {
+  top: -164px;
+}
+
+.fa-star.star-three {
+  transition-delay: .14s;
+  font-size: 14px;
+}
+
+.fa-star.star-two {
+  transition-delay: .07s;
+}
+
+.fa-star.star-one {
+  font-size: 14px;
+}
+
+.section {
+  padding: 300px 0 30px 0;
+}
+
