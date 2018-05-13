@@ -95,10 +95,6 @@ public class RegisterServlet extends HttpServlet {
 		user.answerSecurityQuestions(question2, answer2);
 
 
-
-        //}
-
-
 		userStore.addUser(user);
 		//set attribute to call alert after redirect
 		request.getSession().setAttribute("registered", "successful");

@@ -55,7 +55,7 @@ public class PersistentDataStore {
   }
 
   /**
-   * Get all the security questions choice stored in database and return them in a hashmap 
+   * Get all the security questions choice stored in database and return them in a hashmap
    * @return a hashmap with key = value property in database and in jsp and value = question
    * @throws PersistentDataStoreException if an error was detected during the load from the
    *     Datastore service
@@ -70,17 +70,17 @@ public class PersistentDataStore {
       for (Entity entity : results.asIterable()) {
         try {
           String question = (String) entity.getProperty("question");
-          String value = (String)entity.getProperty("value");
-         
+          String value = (String) entity.getProperty("value");
+
           securityQuestions.put(value, question);
         } catch (Exception e) {
           // In a production environment, errors should be very rare. Errors which may
           // occur include network errors, Datastore service errors, authorization errors,
           // database entity definition mismatches, or service mismatches.
-            
+
           throw new PersistentDataStoreException(e);
         }
-      } 
+      }
       if(securityQuestions.isEmpty())
       {
           securityQuestions.put("2kiss", "What was the name of the boy/girl you had your second kiss with?");
@@ -92,7 +92,7 @@ public class PersistentDataStore {
       }
       return securityQuestions;
   }
-  
+
   /**
    * Loads all User objects from the Datastore service and returns them in a List.
    *
@@ -111,10 +111,10 @@ public class PersistentDataStore {
       try {
         UUID uuid = UUID.fromString((String) entity.getProperty("uuid"));
         String userName = (String) entity.getProperty("username");
-        String password = (String)entity.getProperty("password");
+        String password = (String) entity.getProperty("password");
 
-        String aboutme = (String)entity.getProperty("aboutme");
-        String profilePic = (String)entity.getProperty("profilePic");
+        String aboutme = (String) entity.getProperty("aboutme");
+        String profilePic = (String) entity.getProperty("profilePic");
 
         Instant creationTime = Instant.parse((String) entity.getProperty("creation_time"));
 
@@ -126,7 +126,7 @@ public class PersistentDataStore {
         UserStore.getInstance().addUserKey(uuid, entity.getKey());
 
         users.add(user);
-      
+
       } catch (Exception e) {
         // In a production environment, errors should be very rare. Errors which may
         // occur include network errors, Datastore service errors, authorization errors,
@@ -217,13 +217,13 @@ public class PersistentDataStore {
     userEntity.setProperty("question2", user.getQuestionAnswer().get(1).getValue());
     userEntity.setProperty("answer1", user.getQuestionAnswer().get(0).getAnswer());
     userEntity.setProperty("answer2", user.getQuestionAnswer().get(1).getAnswer());
-    
+
     Key key = datastore.put(userEntity);
     UserStore.getInstance().addUserKey(user.getId(), key);
 
     userEntity.setProperty("aboutme", user.getAboutMe());
     userEntity.setProperty("profilePic", user.getProfilePic());
-    
+
     datastore.put(userEntity);
 
   }
@@ -241,10 +241,10 @@ public class PersistentDataStore {
 catch (EntityNotFoundException e) {
    Log.info(String.format(">>>> User %s is not in datastore", user.getName()));
    return null;
-}  
-   
+}
+
   }
-  
+
   /** Write a Message object to the Datastore service. */
   public void writeThrough(Message message) {
     Entity messageEntity = new Entity("chat-messages");
