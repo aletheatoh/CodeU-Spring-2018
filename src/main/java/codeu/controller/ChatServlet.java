@@ -21,21 +21,17 @@ import codeu.model.store.basic.ConversationStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.UserStore;
 
-import java.awt.*;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.*;
 
 import codeu.stylization.emojis.EmojiUtils;
 import codeu.stylization.text.TextUtils;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 

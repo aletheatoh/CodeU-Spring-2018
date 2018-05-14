@@ -6,7 +6,7 @@ public class TextUtils {
     private String messageParsed;
 
     /** The original message that was passed (unparsed for text stylization) */
-    private String originalMessage;
+    private final String originalMessage;
 
     /**
      * Initiates text utility functions for the String passed in the constructor.
@@ -27,12 +27,12 @@ public class TextUtils {
 
     //Bold - **, Underline - //, Italicize - ~, Strikethrough - =
     private void parsedTextStyles() {
-        String messageUnparsed = originalMessage;
-        messageUnparsed = replaceAllStyles("underline", messageUnparsed);
-        messageUnparsed = replaceAllStyles("bold", messageUnparsed);
-        messageUnparsed = replaceAllStyles("italicize", messageUnparsed);
-        messageUnparsed = replaceAllStyles("strikethrough", messageUnparsed);
-        messageParsed = messageUnparsed;
+        String messageToParse = originalMessage;
+        messageToParse = replaceAllStyles("bold", messageToParse);
+        messageToParse = replaceAllStyles("underline", messageToParse);
+        messageToParse = replaceAllStyles("italicize", messageToParse);
+        messageToParse = replaceAllStyles("strikethrough", messageToParse);
+        messageParsed = messageToParse;
     }
 
     /**
@@ -71,7 +71,7 @@ public class TextUtils {
      * Function will stylize the text with HTML tags.
      * @param stylization The type of stylization the method should look for
      * @param messageUnparsed The message that is currently unparsed for that particular stylization
-     * @return The message value as a String that is correctly parsed through
+     * @return A TextUtils for the purpose of chaining
      */
     private String replaceAllStyles(String stylization, String messageUnparsed) {
         String style = "<strong>";
@@ -90,7 +90,11 @@ public class TextUtils {
         }
         StringBuilder messageReplaced = new StringBuilder();
         int[] indicies = getIndexOfStyle(stylization, messageUnparsed);
-        if(indicies[0] == -1) return messageUnparsed;
+        //If no stylization reported
+        if(indicies[0] == -1) {
+            return messageUnparsed;
+        }
+        //Loop through until the length of unparsed message is 0 OR there is no stylization left to account for
         while (messageUnparsed.length() != 0 && indicies[0] != -1) {
             if (indicies[0] == 0) {
                 messageReplaced.append(style + messageUnparsed.substring(1, indicies[1]) + styleEnding);

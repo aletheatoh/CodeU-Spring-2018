@@ -6,7 +6,7 @@ public class EmojiUtils {
     private String messageParsed;
 
     /** The original message that was passed (unparsed for emojis) */
-    private String originalMessage;
+    private final String originalMessage;
 
     /**
      * Initiates emoji utility functions for the String passed in the constructor.

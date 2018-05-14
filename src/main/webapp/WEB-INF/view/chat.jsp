@@ -104,7 +104,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
         <p>Strikethrough: =STYLEDTEXT=</p>
         <p>Bold: *STYLEDTEXT*</p>
         <p>Italics: ~STYLEDTEXT~</p>
-        <p>Underine: /STYLEDTEXT/</p>
+        <p>Underline: /STYLEDTEXT/</p>
 
     <% } else { %>
       <p><a href="/login">Login</a> to send a message.</p>
