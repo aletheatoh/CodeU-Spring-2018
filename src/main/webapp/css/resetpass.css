@@ -1,0 +1,151 @@
+
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  background-color: #e6eeff;
+}
+
+nav {
+  background-color: #283593;
+}
+label {
+     display: inline-block;
+     width: 100px;
+   }
+nav a {
+  color: white;
+  display: inline-block;
+  font-size: 24px;
+  margin: 15px;
+  text-decoration: none;
+}
+
+#navTitle {
+  font-size: 36px;
+}
+
+#container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  position:absolute;
+  width:60%;
+  left:20%;
+}
+h1 {
+  color: #757575;
+}
+
+button {
+  font-size: 15px;
+}
+
+input[type=text], [type=password],select{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+/* Floating column for labels: 25% width */
+.col-label {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-input {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+    display:none;
+    background-color: white;
+    border: 1px solid;
+    box-shadow: 5px 5px #888888;
+    color: black;
+    position: relative;
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 6px;
+    z-index: 1;
+    left:90px;
+    margin-left:40px;
+    width:30%;
+}
+#message p {
+    font-size: 12px;
+    
+    font-weight: bold;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: #006400;
+    text-decoration: line-through;
+    font-weight: normal;
+}
+
+#formTitle
+{
+	position:center;
+	
+}
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color:  #cc0000;
+    font-weight: bold;
+}
+.valid:before{
+	content: "\2713";
+	color: #006400;
+    font-weight: normal;
+    text-decoration: none;
+}
+#message:after {
+   content: "";
+    position: absolute;
+    top: 10px;
+    right: 45%;
+    margin-top: -30px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent grey transparent;
+}

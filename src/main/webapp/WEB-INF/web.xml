@@ -76,4 +76,56 @@
     <url-pattern>/testdata</url-pattern>
   </servlet-mapping>
 
+
+ <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>codeu.controller.LogoutServlet</servlet-class>
+  </servlet>
+
+<servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+</servlet-mapping>
+
+ <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>codeu.controller.AdminServlet</servlet-class>
+ </servlet>
+
+ <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
+ </servlet-mapping>
+
+<servlet>
+    <servlet-name>ForgotPasswordServlet</servlet-name>
+    <servlet-class>codeu.controller.ForgotPasswordServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>ForgotPasswordServlet</servlet-name>
+    <url-pattern>/forgotpass</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>ResetPassServlet</servlet-name>
+    <servlet-class>codeu.controller.ResetPassServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>ResetPassServlet</servlet-name>
+    <url-pattern>/resetpass</url-pattern>
+</servlet-mapping>
+
+<!-- for the user profile -->
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>codeu.controller.UserServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/user</url-pattern>
+  </servlet-mapping>
+
 </web-app>

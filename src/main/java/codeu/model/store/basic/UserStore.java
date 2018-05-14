@@ -14,11 +14,15 @@
 
 package codeu.model.store.basic;
 
+import codeu.controller.RegisterServlet;
 import codeu.model.data.User;
+import codeu.model.store.persistence.PersistentDataStoreException;
 import codeu.model.store.persistence.PersistentStorageAgent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+import com.google.appengine.api.datastore.Key;
 
 /**
  * Store class that uses in-memory data structures to hold values and automatically loads from and
@@ -55,13 +59,19 @@ public class UserStore {
    */
   private PersistentStorageAgent persistentStorageAgent;
 
+  private static HashMap<UUID, Key> keysMap;
+
   /** The in-memory list of Users. */
   private List<User> users;
+  
+  /** The in-memory list of security question. */
+  private HashMap<String, String> securityQuestions;
 
   /** This class is a singleton, so its constructor is private. Call getInstance() instead. */
   private UserStore(PersistentStorageAgent persistentStorageAgent) {
     this.persistentStorageAgent = persistentStorageAgent;
     users = new ArrayList<>();
+    this.keysMap = new HashMap<UUID, Key>();
   }
 
   /** Load a set of randomly-generated Message objects. */
@@ -120,5 +130,65 @@ public class UserStore {
    */
   public void setUsers(List<User> users) {
     this.users = users;
+  }
+  
+  /**
+   * Set the securityQuestions HashMap for the UserStore
+   * @param questions
+   *        HashMap to be set
+   */
+  public void setSecurityQuestions(HashMap<String, String> questions){
+      this.securityQuestions =questions;
+  }
+  
+  /**
+   * Get the securityQuestion HashMap
+   * @return securityQuestion HashMap
+   */
+  public HashMap<String, String> getSecurityQuestions()
+  {
+    return this.securityQuestions;
+      
+  }
+  
+  /**
+   * Add a pair of user id, user key to the keysMap
+   * @param id
+   *        uuid of the user
+   * @param key
+   *        key of the user entity in database
+   */
+  public void addUserKey(UUID id, Key key)
+  {
+      if(!this.keysMap.containsKey(id))
+      {
+          this.keysMap.put(id, key);
+      }
+  }
+  
+  /**
+   * Get user key corresponding to specified uuid
+   * @param id
+   *        user uuid
+   * @return key
+   */
+  public Key getUserKey(UUID id)
+  {
+      return this.keysMap.get(id);
+  }
+  
+  /**
+   * Update the password of the user in the database
+   * @param user
+   *        user to be update
+   * @param newPass
+   *        new password
+   * @return the key of the user
+   * 
+   */
+  public Key updatePassword(User user, String newPass)
+  {
+      
+      return persistentStorageAgent.updatePassword(user, newPass);
   }
 }

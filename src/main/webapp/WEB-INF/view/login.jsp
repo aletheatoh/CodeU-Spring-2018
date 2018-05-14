@@ -26,13 +26,25 @@
     <a href="/conversations">Conversations</a>
     <% if(request.getSession().getAttribute("user") != null){ %>
       <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
+      <a href="/user">Profile</a>
+      <a href="/logout">Log Out</a>
     <% } else{ %>
       <a href="/login">Login</a>
       <a href="/register">Register</a>
     <% } %>
     <a href="/about.jsp">About</a>
   </nav>
-
+	<%
+	if("successful".equalsIgnoreCase((String) session.getAttribute("reset"))){
+	%>
+	<script>alert('Your password have been successfully reset. Please log in again! ');</script>
+	<% }
+	else if("successful".equalsIgnoreCase((String) session.getAttribute("registered")))
+	{
+	 %>
+	    <script>"alert('Registerd Successfully! Please log in to start using the webchat!');</script>
+	<%}
+	%>
   <div id="container">
     <h1>Login</h1>
 
@@ -46,6 +58,7 @@
       <br></br>
       <label for="password">Password: </label>
       <input type="password" name="password" id="password">
+      <a href = "/forgotpass">Forgot Password?</a>
       <br></br>
       <button type="submit">Login</button>
     </form>
