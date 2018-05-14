@@ -17,7 +17,7 @@
 <html>
 <head>
   <title>Login</title>
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 
@@ -83,7 +83,7 @@
 	<%}
 	%>
   <div id="container">
-    <h1>Login</h1>
+    <h1 id="formTitle">Login</h1>
 
     <% if(request.getAttribute("error") != null){ %>
         <h2 style="color:red"><%= request.getAttribute("error") %></h2>
@@ -95,6 +95,7 @@
       <br></br>
       <label for="password">Password: </label>
       <input type="password" name="password" id="password">
+      <br></br>
       <a href = "/forgotpass">Forgot Password?</a>
       <br></br>
       <button type="submit" id="submit">Login</button>

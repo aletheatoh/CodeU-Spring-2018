@@ -70,7 +70,7 @@ public class ForgotPasswordServlet extends HttpServlet {
                 request.getSession().setAttribute("user", username);
                 request.setAttribute("user", username);
                 request.setAttribute("validUser", true);
-                if(this.user.getQuestionAnswer().size()==0){
+                if(this.user.getQuestionAnswer().size()!=0){
                String question1 = this.securityQuestions.get(user.getQuestionAnswer().get(0).getValue());
                String question2 = this.securityQuestions.get(user.getQuestionAnswer().get(1).getValue());
                 request.setAttribute("question1", question1);
@@ -80,8 +80,10 @@ public class ForgotPasswordServlet extends HttpServlet {
                 }
                 else {
                     request.setAttribute("user", request.getAttribute("user"));
+                    request.setAttribute("error", "User is missing security questions!");
                     request.getRequestDispatcher("/WEB-INF/view/resetpass.jsp").forward(
                         request, response);
+                    
                 }
                 
             }
