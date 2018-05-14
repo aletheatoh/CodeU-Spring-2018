@@ -30,7 +30,7 @@ public class User {
   private Instant passReset;
   private String aboutMe = "No Bio Available"; // default value
   private String profilePicture;
-  
+
   /**
    * Constructs a new User.
    *
@@ -43,7 +43,7 @@ public class User {
     this.id = id;
     this.name = name;
     this.hashedPassword = password;
-    this.creation = creation;    
+    this.creation = creation;
     this.securityAnswers = new ArrayList<SecurityQuestion>();
   }
 
@@ -52,12 +52,12 @@ public class User {
     return id;
   }
 
-  
+
   /** Returns the username of this User. */
   public String getName() {
     return name;
   }
-  
+
   /**
    * Returns the password of this User.
    */
@@ -69,22 +69,22 @@ public class User {
   public Instant getCreationTime() {
     return creation;
   }
-  
+
   /** Save user answers to security questions */
   public void answerSecurityQuestions(String questionValue, String answer)
   {
       this.securityAnswers.add(new SecurityQuestion(questionValue, answer));
   }
-  
+
   /**
-   * get the question-answer pair for the user 
+   * get the question-answer pair for the user
    * @return the questions and answers of the user
    */
   public ArrayList<SecurityQuestion> getQuestionAnswer()
   {
       return this.securityAnswers;
   }
-  
+
   /**
    * Reset the password of the user
    * @param newPassword
@@ -92,9 +92,9 @@ public class User {
   public void resetPass(String newPassword)
   {
       this.hashedPassword=newPassword;
-   
+
   }
-  
+
   /**
    * get the last time user reset his/her password
    * @return
@@ -110,7 +110,7 @@ public class User {
   {
       this.passReset = Instant.now();
   }
-  
+
 
   /** Returns the about me of this User. */
   public String getAboutMe() {

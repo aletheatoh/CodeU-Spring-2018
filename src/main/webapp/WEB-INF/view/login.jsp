@@ -88,7 +88,7 @@
     <% if(request.getAttribute("error") != null){ %>
         <h2 style="color:red"><%= request.getAttribute("error") %></h2>
     <% } %>
-	
+
     <form action="/login" method="POST">
       <label for="username">Username: </label>
       <input type="text" name="username" id="username">

@@ -58,6 +58,7 @@
 
 		
 		
+
 		<form action="/register" method="POST">
 		<div class = "row">
 			<div class = "col-label"><label for="username">Username: </label> </div>
@@ -73,15 +74,15 @@
 	  				<p id="number" class="invalid">A <b>number</b></p>
 	  				<p id="length" class="invalid">Minimum <b>8 characters</b></p>
 			</div>
-			
+
 			</div>
-			
+
 		</div>
-		
-  		
+
+
 		<div class = "row">
 			<div class = "col-label"><label for="question1">Security Question 1:</label> </div>
-				<div class = "col-input"> 
+				<div class = "col-input">
 					<select id="question1" name="question1">
 						<option selected disabled>Choose a security question</option>
 	         		 	<option value="2kiss">What was the name of the boy/girl you had your second kiss with?</option>
@@ -99,7 +100,7 @@
 		</div>
 		<div class = "row">
 			<div class = "col-label"><label for="question2">Security Question 2:</label> </div>
-				<div class = "col-input"> 
+				<div class = "col-input">
 					<select id="question2" name="question2">
 						<option selected disabled>Choose a security question</option>
 	         		 	<option value="2kiss">What was the name of the boy/girl you had your second kiss with?</option>
@@ -111,7 +112,7 @@
 	        		</select>
 	        	</div>
 			</div>
-			
+
 		<div class = "row">
 			<div class = "col-label"><label for="answer2">Answer: </label> </div>
 			<div class = "col-input"><input type="text" name="answer2" id="answer2" required> </div>
@@ -120,8 +121,9 @@
 			<button type="submit" id="submit">Submit</button>
 		</div>
 		</form>
-		
+
 		</div>
+
 <script>
 
 

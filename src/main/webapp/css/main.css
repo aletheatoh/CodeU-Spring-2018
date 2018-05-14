@@ -23,7 +23,7 @@
 
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.6;
   font-size: 18px;
   background-image: url('/images/TFJsA2.jpg');
@@ -149,7 +149,32 @@ a {
 }
 
 h1 {
-  color: #757575;
+  color: #7B1FA2;
+  font-weight: 200;
+}
+
+#profile-page-title {
+  text-align: center;
+}
+
+#edit-profile-container {
+  border: 2px solid #64DD17;
+  width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+  font-weight: 200;
+}
+
+.profile-headings {
+  margin-top: 0px !important;
+  margin-bottom: 0 !important;
+  color: black;
+  font-weight: bold;
+}
+
+#username-title {
+  font-family: 'Delius Swash Caps';
+  color: #E91E63;
 }
 
 input {
@@ -158,9 +183,125 @@ input {
 
 #submit {
   font-size: 18px;
+  color: #FFF;
+  background-color: #FF5722;
+  padding: 7px;
+}
+
+textarea {
+	width:200px;
+  outline: none;
+	overflow:hidden;
+	background-color:#FFF;
+	color:#222;
+	font-family:Courier, monospace;
+	font-weight:normal;
+	font-size:15px;
+	resize:none;
+	line-height:40px;
+	padding-left:100px;
+	padding-right:100px;
+	padding-top:45px;
+	padding-bottom:34px;
+	background-image:url(https://static.tumblr.com/maopbtg/E9Bmgtoht/lines.png), url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png);
+	background-repeat:repeat-y, repeat;
+	-webkit-border-radius:12px;
+	border-radius:12px;
+	-webkit-box-shadow: 0px 2px 14px #000;
+	box-shadow: 0px 2px 14px #000;
+	border-top:1px solid #FFF;
+	border-bottom:1px solid #FFF;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    /* padding: 20px; */
+    border: 1px solid #888;
+    width: 40%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.modal-body {
+  padding: 20px;
+  font-weight: lighter;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
 }
 
 #confirm {
 	display: inline-block;
 	left-padding: 50px;
+}
+
+.imagearea {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#profile-pic-profile {
+  width: 250px;
+  border-radius: 50%;
+  padding: 5px;
 }

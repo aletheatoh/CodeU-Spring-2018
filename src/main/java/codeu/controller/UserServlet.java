@@ -137,5 +137,23 @@ public class UserServlet extends HttpServlet {
     request.setAttribute("profilePic", profilePic);
 
     response.sendRedirect("/user");
+
+    // String password = request.getParameter("password");
+    // String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
+    // LOG.info(String.format(">>>> new password: %s", password));
+    // String username = (String)request.getSession(false).getAttribute("user");
+    // LOG.info(String.format(">>> username is : %s, which is %s",username, userStore.isUserRegistered(username)));
+    // User user = userStore.getUser(username);
+    // LOG.info(String.format(">>> username is from userstore is : %s", user.getName()));
+    // user.setResetPassTime();
+    // Key key = userStore.updatePassword(user, passwordHash);
+    // if(key == userStore.getUserKey(user.getId()))
+    // {
+    //     LOG.info("Reset successfully!");
+    // }
+    // userStore.getUser((String)request.getSession().getAttribute("user")).resetPass(passwordHash);
+    // request.getSession(false).removeAttribute("user");
+    // request.getSession(false).setAttribute("reset", "successful");
+    // response.sendRedirect("/login");
   }
 }
