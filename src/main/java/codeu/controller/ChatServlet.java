@@ -20,6 +20,7 @@ import codeu.model.data.User;
 import codeu.model.store.basic.ConversationStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.UserStore;
+
 import java.io.IOException;
 import java.time.Instant;
 import java.util.List;
@@ -28,6 +29,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import codeu.stylization.emojis.EmojiUtils;
+import codeu.stylization.text.TextUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
@@ -142,6 +146,14 @@ public class ChatServlet extends HttpServlet {
 
     // this removes any HTML from the message content
     String cleanedMessageContent = Jsoup.clean(messageContent, Whitelist.none());
+
+    //Parse emojis
+    EmojiUtils emojiMessage = new EmojiUtils(cleanedMessageContent);
+    cleanedMessageContent = emojiMessage.getMessageParsed();
+
+    //Parse text stylizations
+    TextUtils textStylizedMessage = new TextUtils(cleanedMessageContent);
+    cleanedMessageContent = textStylizedMessage.getMessageParsed();
 
     Message message =
         new Message(

@@ -13,6 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="codeu.model.data.Conversation" %>
 <%@ page import="codeu.model.data.Message" %>
@@ -25,6 +26,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
   <title><%= conversation.getTitle() %></title>
   <link rel="stylesheet" href="/css/main.css" type="text/css">
 
@@ -90,6 +92,20 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
         <br/>
         <button type="submit">Send</button>
     </form>
+
+    <h2>Emoji Shortcuts</h2>
+    <div id="shortcuts">
+        <p>😀- :grinning:  😍- :heart_eyes:   😂- :laughing:   😭- :crying:   😉- :winking:</p>
+        <p>😎- :grinning:   😞- :disappointed:   😕- :confused:   😐- :neutral:  😠- :angry:</p>
+    </div>
+
+    <h2>Text Style Shortcuts</h2>
+    <div id="shortcuts">
+        <p>Strikethrough: =STYLEDTEXT=</p>
+        <p>Bold: *STYLEDTEXT*</p>
+        <p>Italics: ~STYLEDTEXT~</p>
+        <p>Underline: /STYLEDTEXT/</p>
+
     <% } else { %>
       <p><a href="/login">Login</a> to send a message.</p>
     <% } %>
