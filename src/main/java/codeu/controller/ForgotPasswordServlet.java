@@ -70,12 +70,20 @@ public class ForgotPasswordServlet extends HttpServlet {
                 request.getSession().setAttribute("user", username);
                 request.setAttribute("user", username);
                 request.setAttribute("validUser", true);
+                if(this.user.getQuestionAnswer().size()==0){
                String question1 = this.securityQuestions.get(user.getQuestionAnswer().get(0).getValue());
                String question2 = this.securityQuestions.get(user.getQuestionAnswer().get(1).getValue());
                 request.setAttribute("question1", question1);
                 request.setAttribute("question2", question2);
                 request.getRequestDispatcher("/WEB-INF/view/forgotpass.jsp").forward(
                     request, response);
+                }
+                else {
+                    request.setAttribute("user", request.getAttribute("user"));
+                    request.getRequestDispatcher("/WEB-INF/view/resetpass.jsp").forward(
+                        request, response);
+                }
+                
             }
             else {
                 request.setAttribute("error", "That username was not found.");
@@ -93,8 +101,6 @@ public class ForgotPasswordServlet extends HttpServlet {
         if ((answers.get(0).checkAnswer(answer1)) & (answers.get(1).checkAnswer(
             answer2))) {
             request.setAttribute("user", request.getAttribute("user"));
-            LOG.info(String.format(">>> username is in forgot request: %s",(String)request.getAttribute("user")));
-            LOG.info(String.format(">>> username is forgot session : %s",(String)request.getSession(false).getAttribute("user")));
             request.getRequestDispatcher("/WEB-INF/view/resetpass.jsp").forward(
                 request, response);
         }

@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -9,29 +7,56 @@
 
 </head>
 <body>
-	<nav> <a id="navTitle" href="/">CodeU Chat App</a> <a
-		href="/conversations">Conversations</a> <%
-     if (request.getSession().getAttribute("user") != null) {
- %>
-	<a>Hello <%=request.getSession().getAttribute("user")%>!
-	</a> 
-	<a href="/logout">Log Out</a><%
-     }
-     else {
- %> <a href="/login">Login</a> <%
-     }
- %> </nav>
+<div class="nav">
+<div class="button-container-1">
+ <span class="mas">Home</span>
+	<a id="navTitle" href="/"><button type="button" name="Hover">Home</button></a>
+</div>
 
-	<div id="container">
+<% if(request.getSession().getAttribute("user") != null){ %>
+	
+		<div class="button-container-1">
+ 			<span class="mas"><%= request.getSession().getAttribute("user") %></span>
+			<a  href="/user"><button type="button" name="Hover"><%= request.getSession().getAttribute("user") %></button></a>
+		</div>
+   
+		<div class="button-container-1">
+ 			<span class="mas">Log Out</span>
+			<a  href="/logout"><button type="button" name="Hover">Log Out</button></a>
+		</div>
+		
+		<div class="button-container-1">
+				 <span class="mas">Conversation</span>
+				<a href ="/conversation"><button type="button" name="Hover">Conversation</button></a>
+		</div>
+		
+<% } else{ %>
+		<div class="button-container-1">
+ 			<span class="mas">Register</span>
+			<a href="/register"><button type="button" name="Hover">Register</button></a>
+		</div>
+		
+		<div class="button-container-1">
+ 			<span class="mas">Login</span>
+			<a  href="/login"><button type="button" name="Hover">Login</button></a>
+		</div>
+		
+		
+	
+	 <% } %>
+
+<div class="button-container-1">
+ <span class="mas">About</span>
+	<a href="/about.jsp"><button type="button" name="Hover">About</button></a>
+</div>
+
+</div>
+ 
+
+<div id="container">
 		<h1 id ="formTitle">Register</h1>
 
-		<%
-		    if (request.getAttribute("error") != null) {
-		%>
-		<h2 style="color: red"><%=request.getAttribute("error")%></h2>
-		<%
-		    }
-		%>
+		
 		
 		<form action="/register" method="POST">
 		<div class = "row">
@@ -92,92 +117,92 @@
 			<div class = "col-input"><input type="text" name="answer2" id="answer2" required> </div>
 		</div>
 		<div class = "row">
-			<button type="submit">Submit</button>
+			<button type="submit" id="submit">Submit</button>
 		</div>
 		</form>
 		
 		</div>
-		
-	<script>
-	
-	var myInput = document.getElementById("password");
-	var letter = document.getElementById("letter");
-	var capital = document.getElementById("capital");
-	var number = document.getElementById("number");
-	var length = document.getElementById("length");
+<script>
 
-	var question1 = document.getElementById("question1");
-	var question2 = document.getElementById("question2");
-	var previousSelectIndex =0;//keep track of the previous selection
-	
-	//disable the user selection so that user cannot choose 1 question for both security questions
-	question1.onchange = function()
-	{
-		var optionsForQuestion2 = question2.options;
-		var selectedIndex=question1.selectedIndex;
-        if(previousSelectIndex!=0)
-       	{
-        question2.options[previousSelectIndex].disabled = false;//enable previous selection in case user change mind
-        }
-		question2.options[selectedIndex].disabled = true;
-        previousSelectIndex = selectedIndex;
-	}
-	
-	// When the user clicks on the password field, show the message box
-	myInput.onfocus = function() {
-    document.getElementById("message").style.display = "block";
-	}
-	
-	// When the user clicks outside of the password field, hide the message box
-	myInput.onblur = function() {
-    document.getElementById("message").style.display = "none";
-	}
 
-	// When the user starts to type something inside the password field
-	myInput.onkeyup = function() {
- 	 // Validate lowercase letters
-  	var lowerCaseLetters = /[a-z]/g;
-  	if(myInput.value.match(lowerCaseLetters)) {  
-    letter.classList.remove("invalid");
-    letter.classList.add("valid");
-  	} else {
-    letter.classList.remove("valid");
-    letter.classList.add("invalid");
-  	}
-  
-  	// Validate capital letters
-  	var upperCaseLetters = /[A-Z]/g;
-  	if(myInput.value.match(upperCaseLetters)) {  
-    capital.classList.remove("invalid");
-    capital.classList.add("valid");
- 	 } else {
-    capital.classList.remove("valid");
-    capital.classList.add("invalid");
-  	}
 
-  	// Validate numbers
-  	var numbers = /[0-9]/g;
-  	if(myInput.value.match(numbers)) {  
-    number.classList.remove("invalid");
-    number.classList.add("valid");
-  	} else {
-    number.classList.remove("valid");
-    number.classList.add("invalid");
-  	}
-  
-  // Validate length
-  if(myInput.value.length >= 8) {
-    length.classList.remove("invalid");
-    length.classList.add("valid");
-  } else {
-    length.classList.remove("valid");
-    length.classList.add("invalid");
-  }
+var myInput = document.getElementById("password");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+var question1 = document.getElementById("question1");
+var question2 = document.getElementById("question2");
+var previousSelectIndex =0;//keep track of the previous selection
+
+//disable the user selection so that user cannot choose 1 question for both security questions
+question1.onchange = function()
+{
+	var optionsForQuestion2 = question2.options;
+	var selectedIndex=question1.selectedIndex;
+    if(previousSelectIndex!=0)
+   	{
+    question2.options[previousSelectIndex].disabled = false;//enable previous selection in case user change mind
+    }
+	question2.options[selectedIndex].disabled = true;
+    previousSelectIndex = selectedIndex;
 }
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+	 // Validate lowercase letters
+	var lowerCaseLetters = /[a-z]/g;
+	if(myInput.value.match(lowerCaseLetters)) {  
+letter.classList.remove("invalid");
+letter.classList.add("valid");
+	} else {
+letter.classList.remove("valid");
+letter.classList.add("invalid");
+	}
+
+	// Validate capital letters
+	var upperCaseLetters = /[A-Z]/g;
+	if(myInput.value.match(upperCaseLetters)) {  
+capital.classList.remove("invalid");
+capital.classList.add("valid");
+	 } else {
+capital.classList.remove("valid");
+capital.classList.add("invalid");
+	}
+
+	// Validate numbers
+	var numbers = /[0-9]/g;
+	if(myInput.value.match(numbers)) {  
+number.classList.remove("invalid");
+number.classList.add("valid");
+	} else {
+number.classList.remove("valid");
+number.classList.add("invalid");
+	}
+
+// Validate length
+if(myInput.value.length >= 8) {
+length.classList.remove("invalid");
+length.classList.add("valid");
+} else {
+length.classList.remove("valid");
+length.classList.add("invalid");
+}
+}
+
+
+</script>	
 	
-
-
-
-	</script>
 </body>
 </html>

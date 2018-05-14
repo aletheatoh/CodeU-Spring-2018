@@ -5,14 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/css/test2.css">
+<link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 
 
 <div class='section section--stars'>
   <div class='btn btn--stars' id = "start">
-   <p id ="message">Hover me!</p>
+   <p id ="message">HOVER ME!</p>
     <div class='stars'>
       <i class='fa fa-star star-one'></i>
       <i class='fa fa-star star-two'></i>
@@ -76,7 +76,7 @@
 
 	document.getElementById('start').onmouseout = function() {
 		document.getElementById("message").innerHTML = "Hover me!";
-   document.getElementById("message").style.fontSize = "15px";
+   document.getElementById("message").style.fontSize = "20px";
 	}
 	
 	

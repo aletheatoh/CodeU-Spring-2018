@@ -22,8 +22,9 @@ body {
 }
 .nav {
 	position: absolute;
-	left:200px;
+  width:100%;
 	font-weight:bold;
+	text-align:center;
 }
 
 
@@ -37,7 +38,6 @@ body {
   margin-right: 50px;
   margin-top: 8vh;
   overflow: hidden;
-  border: 1px solid #000;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   transition: 0.5s;
@@ -60,6 +60,8 @@ body {
   cursor: pointer;
   -webkit-animation: ani2 0.7s steps(70) forwards;
   animation: ani2 0.7s steps(70) forwards;
+  border-radius: 6px 22px;
+  border-color:black;
 }
 .button-container-3 button:hover {
   -webkit-animation: ani 0.7s steps(70) forwards;
@@ -132,7 +134,6 @@ a {
   box-sizing: border-box;
   text-align: center;
   color: rgb(236, 240, 241);
-  text-transform: lowercase;
   letter-spacing: 2px;
   padding: 14px 0;
   overflow: hidden;
@@ -148,7 +149,7 @@ a {
 }
 
 #message {
-	font-size: 15px;
+	font-size: 20px;
 }
 .btn--stars {
   background: transparent;
@@ -162,7 +163,7 @@ a {
 .fa-star {
   position: relative;
   transition: all .2s ease;
-  top: -60px;
+  top: -200px;
 }
 
 .btn:hover .fa-star {
@@ -187,6 +188,6 @@ a {
 }
 
 .section {
-  padding: 300px 0 30px 0;
+  padding: 312px 0 30px 0;
 }
 

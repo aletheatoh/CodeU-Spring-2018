@@ -37,7 +37,6 @@ body {
   margin-right: 50px;
   margin-top: 8vh;
   overflow: hidden;
-  border: 1px solid #000;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   transition: 0.5s;
@@ -60,6 +59,8 @@ body {
   cursor: pointer;
   -webkit-animation: ani2 0.7s steps(70) forwards;
   animation: ani2 0.7s steps(70) forwards;
+  border-radius: 6px 22px;
+  border-color:black;
 }
 .button-container-3 button:hover {
   -webkit-animation: ani 0.7s steps(70) forwards;

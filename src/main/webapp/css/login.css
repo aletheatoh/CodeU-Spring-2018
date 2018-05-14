@@ -145,6 +145,7 @@ a {
 #container {
   margin-left: auto;
   margin-right: auto;
+  top:50%;
   width: 800px;
 }
 
@@ -158,9 +159,4 @@ input {
 
 #submit {
   font-size: 18px;
-}
-
-#confirm {
-	display: inline-block;
-	left-padding: 50px;
 }
