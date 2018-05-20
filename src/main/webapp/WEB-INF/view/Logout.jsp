@@ -5,36 +5,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Log Out</title>
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/logout.css">
 </head>
 <body>
-  <nav>
-    <a id="navTitle" href="/">CodeU Chat App</a>
-    <a href="/conversations">Conversations</a>
-    <% if(request.getSession().getAttribute("user") != null){ %>
-      <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-      <a href="/user">Profile</a>
-      <a href="/logout">Log Out</a>
-    <% } else{ %>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-    <% } %>
-    <a href="/about.jsp">About</a>
-  </nav>
+   <div class="nav">
+<div class="button-container-1">
+ <span class="mas">Home</span>
+	<a id="navTitle" href="/"><button type="button" name="Hover">Home</button></a>
+</div>
+	
+		<div class="button-container-1">
+ 			<span class="mas"><%= request.getSession().getAttribute("user") %></span>
+			<a  href="/user"><button type="button" name="Hover"><%= request.getSession().getAttribute("user") %></button></a>
+		</div>
+   
+		<div class="button-container-1">
+				 <span class="mas">Conversation</span>
+				<a href ="/conversations"><button type="button" name="Hover">Conversation</button></a>
+		</div>
+	 <div class="button-container-1">
+ <span class="mas">About</span>
+	<a href="/about.jsp"><button type="button" name="Hover">About</button></a>
+</div>
 
-  <div id="container">
-    <h1>Logout</h1>
+</div>
 
     <% if(request.getAttribute("error") != null){ %>
         <h2 style="color:red"><%= request.getAttribute("error") %></h2>
     <% } %>
 
-    <form action="/logout" method="POST">
-      <h4>Do you want to log out of the web chat?</h4>
-      <div id="confirm">
-      <button type="submit" name ="button" value ="yes">Yes</button>
-      <button type="submit" name = "button" value = "no">No</button>
-      </div>
+    <div id ="form">
+    <form action="/logout" method="POST">    
+      
+
+		<div class="header label">Are you sure?</div>
+  		<div class="label-2">
+		      <button class="btn btn-two yes" type="submit" name ="button" value ="yes">YES</button>
+		    
+		    
+		      <button class="btn btn-two no"type="submit" name = "button" value = "no">NO</button>
+	  </div>
+
+  
     </form>
   </div>
 </body>
