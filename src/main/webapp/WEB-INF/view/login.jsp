@@ -17,23 +17,54 @@
 <html>
 <head>
   <title>Login</title>
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 
-  <nav>
-    <a id="navTitle" href="/">CodeU Chat App</a>
-    <a href="/conversations">Conversations</a>
-    <% if(request.getSession().getAttribute("user") != null){ %>
-      <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-      <a href="/user">Profile</a>
-      <a href="/logout">Log Out</a>
-    <% } else{ %>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-    <% } %>
-    <a href="/about.jsp">About</a>
-  </nav>
+  <div class="nav">
+<div class="button-container-1">
+ <span class="mas">Home</span>
+	<a id="navTitle" href="/"><button type="button" name="Hover">Home</button></a>
+</div>
+
+<% if(request.getSession().getAttribute("user") != null){ %>
+	
+		<div class="button-container-1">
+ 			<span class="mas"><%= request.getSession().getAttribute("user") %></span>
+			<a  href="/user"><button type="button" name="Hover"><%= request.getSession().getAttribute("user") %></button></a>
+		</div>
+   
+		<div class="button-container-1">
+ 			<span class="mas">Log Out</span>
+			<a  href="/logout"><button type="button" name="Hover">Log Out</button></a>
+		</div>
+		
+		<div class="button-container-1">
+				 <span class="mas">Conversation</span>
+				<a href ="/conversation"><button type="button" name="Hover">Conversation</button></a>
+		</div>
+		
+<% } else{ %>
+		<div class="button-container-1">
+ 			<span class="mas">Register</span>
+			<a href="/register"><button type="button" name="Hover">Register</button></a>
+		</div>
+		
+		<div class="button-container-1">
+ 			<span class="mas">Login</span>
+			<a  href="/login"><button type="button" name="Hover">Login</button></a>
+		</div>
+		
+		
+	
+	 <% } %>
+
+<div class="button-container-1">
+ <span class="mas">About</span>
+	<a href="/about.jsp"><button type="button" name="Hover">About</button></a>
+</div>
+
+</div>
 	<%
 	if("successful".equalsIgnoreCase((String) session.getAttribute("reset"))){
 	%>
@@ -42,11 +73,17 @@
 	else if("successful".equalsIgnoreCase((String) session.getAttribute("registered")))
 	{
 	 %>
-	    <script>"alert('Registerd Successfully! Please log in to start using the webchat!');</script>
+	    <script>alert('Registerd Successfully! Please log in to start using the webchat!');</script>
+	<%}
+	else if(request.getSession().getAttribute("user") != null)
+	{
+	    request.setAttribute("error","already logged in");
+	 %>
+	    <script>alert('You are already logged in. Please log out before logging in as other users!');</script>
 	<%}
 	%>
   <div id="container">
-    <h1>Login</h1>
+    <h1 id="formTitle">Login</h1>
 
     <% if(request.getAttribute("error") != null){ %>
         <h2 style="color:red"><%= request.getAttribute("error") %></h2>
@@ -58,9 +95,10 @@
       <br></br>
       <label for="password">Password: </label>
       <input type="password" name="password" id="password">
+      <br></br>
       <a href = "/forgotpass">Forgot Password?</a>
       <br></br>
-      <button type="submit">Login</button>
+      <button type="submit" id="submit">Login</button>
     </form>
   </div>
 </body>

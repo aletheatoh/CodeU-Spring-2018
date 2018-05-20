@@ -5,9 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/css/test2.css">
+<link rel="stylesheet" href="/css/test.css">
 </head>
 <body>
+
 
 <div class='section section--stars'>
   <div class='btn btn--stars' id = "start">
@@ -66,8 +67,8 @@
 
 </div>
  
- 
  <script type="text/javascript">
+ 
  document.getElementById('start').onmouseover = function() {
 	  document.getElementById("message").innerHTML = "<br>1. Register and login to start using the web chat " +"<br><br>"+" 2. Go to conversation to send messages" +"<br><br>"+" 3. Go to about to know more about the project and our awesome team!";
   document.getElementById("message").style.fontSize = "10px";
@@ -77,6 +78,9 @@
 		document.getElementById("message").innerHTML = "Hover me!";
    document.getElementById("message").style.fontSize = "15px";
 	}
+	
+	
+	
  </script>
 </body>
 </html>

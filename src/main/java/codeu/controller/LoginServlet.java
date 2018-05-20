@@ -70,6 +70,11 @@ public class LoginServlet extends HttpServlet {
    */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    if("already logged in".equals(request.getAttribute("error")))//test if user is already logged in
+    {
+        request.setAttribute("error","already logged in");
+        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+    }
     String username = request.getParameter("username");
     String password = request.getParameter("password");
     if (userStore.isUserRegistered(username)) {
