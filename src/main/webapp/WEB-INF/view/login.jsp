@@ -41,7 +41,7 @@
 		
 		<div class="button-container-1">
 				 <span class="mas">Conversation</span>
-				<a href ="/conversation"><button type="button" name="Hover">Conversation</button></a>
+				<a href ="/conversations"><button type="button" name="Hover">Conversation</button></a>
 		</div>
 		
 <% } else{ %>
@@ -96,7 +96,7 @@
       <label for="password">Password: </label>
       <input type="password" name="password" id="password">
       <br></br>
-      <a href = "/forgotpass">Forgot Password?</a>
+      <a href = "/forgotpass" id="forgotpass">Forgot Password?</a>
       <br></br>
       <button type="submit" id="submit">Login</button>
     </form>

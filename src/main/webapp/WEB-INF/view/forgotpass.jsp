@@ -5,23 +5,53 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Forgot Password</title>
-<link rel="stylesheet" href="/css/register.css">
+<link rel="stylesheet" href="/css/forgotpass.css">
 
 </head>
 <body>
-<nav> <a id="navTitle" href="/">CodeU Chat App</a> <a
-		href="/conversations">Conversations</a> <%
-     if (request.getSession().getAttribute("user") != null) {
- %>
-	<a>Hello <%=request.getSession().getAttribute("user")%>!
-	</a>
-  <a href="/user">Profile</a>
-  <a href="/logout">Log Out</a><%
-     }
-     else {
- %> <a href="/login">Login</a> <%
-     }
- %> </nav>
+  <div class="nav">
+<% if(request.getSession().getAttribute("user") != null){ %>
+	
+		<div class="button-container-1">
+ 			<span class="mas"><%= request.getSession().getAttribute("user") %></span>
+			<a ><button type="button" name="Hover"><%= request.getSession().getAttribute("user") %></button></a>
+		</div>
+   
+		<div class="button-container-1">
+ 			<span class="mas">Switch User</span>
+			<a  href="/logout"><button type="button" name="Hover">Switch User</button></a>
+		</div>
+		
+		<div class="button-container-1">
+ 			<span class="mas">Try Login</span>
+			<a  href="/login"><button type="button" name="Hover">Try Login</button></a>
+		</div>
+<% } else{ %>
+		<div class="button-container-1">
+		 <span class="mas">Home</span>
+			<a href="/about.jsp"><button type="button" name="Hover">Home</button></a>
+		</div>
+		<div class="button-container-1">
+ 			<span class="mas">Register</span>
+			<a href="/register"><button type="button" name="Hover">Register</button></a>
+		</div>
+		
+		<div class="button-container-1">
+ 			<span class="mas">Login</span>
+			<a  href="/login"><button type="button" name="Hover">Login</button></a>
+		</div>
+		<div class="button-container-1">
+		 <span class="mas">About</span>
+			<a href="/about.jsp"><button type="button" name="Hover">About</button></a>
+		</div>
+		
+		
+	
+	 <% } %>
+
+		
+
+</div>
 
 	<div id="container">
 		<h1 id ="formTitle">Reset Password</h1>

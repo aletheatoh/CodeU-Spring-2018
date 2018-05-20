@@ -20,25 +20,54 @@
 <html>
 <head>
   <title>Conversations</title>
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/conversation.css">
 </head>
 <body>
 
-  <nav>
-    <a id="navTitle" href="/">CodeU Chat App</a>
-    <a href="/conversations">Conversations</a>
-    <% if(request.getSession().getAttribute("user") != null){ %>
-      <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-      <a href="/user">Profile</a>
-      <a href="/logout">Log Out</a>
-    <% } else{ %>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-    <% } %>
-    <a href="/about.jsp">About</a>
-    <a href="/admin">Admin</a>
-  </nav>
+  <div class="nav">
+<div class="button-container-1">
+ <span class="mas">Home</span>
+	<a id="navTitle" href="/"><button type="button" name="Hover">Home</button></a>
+</div>
 
+  <% if(request.getSession().getAttribute("user") != null){ %>
+	
+		<div class="button-container-1">
+ 			<span class="mas"><%= request.getSession().getAttribute("user") %></span>
+			<a  href="/user"><button type="button" name="Hover"><%= request.getSession().getAttribute("user") %></button></a>
+		</div>
+   
+		<div class="button-container-1">
+ 			<span class="mas">Log Out</span>
+			<a  href="/logout"><button type="button" name="Hover">Log Out</button></a>
+		</div>
+		
+		
+		
+<% } else{ %>
+		<div class="button-container-1">
+ 			<span class="mas">Register</span>
+			<a href="/register"><button type="button" name="Hover">Register</button></a>
+		</div>
+		
+		<div class="button-container-1">
+ 			<span class="mas">Login</span>
+			<a  href="/login"><button type="button" name="Hover">Login</button></a>
+		</div>
+		
+		
+	
+	 <% } %>
+
+<div class="button-container-1">
+ <span class="mas">About</span>
+	<a href="/about.jsp"><button type="button" name="Hover">About</button></a>
+</div>
+
+</div>
+  
+  
+  
   <div id="container">
 
     <% if(request.getAttribute("error") != null){ %>
@@ -46,7 +75,7 @@
     <% } %>
 
     <% if(request.getSession().getAttribute("user") != null){ %>
-      <h1>New Conversation</h1>
+      <h1 id="formTitle">New Conversation</h1>
       <form action="/conversations" method="POST">
           <div class="form-group">
             <label class="form-control-label">Title:</label>
