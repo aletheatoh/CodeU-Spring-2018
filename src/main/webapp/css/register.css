@@ -219,24 +219,9 @@ input[type=submit] {
     font-weight: bold;
 }
 
-/* Add a green text color and a checkmark when the requirements are right */
-.valid {
-    color: #006400;
-    text-decoration: line-through;
-    font-weight: normal;
-}
 
-/* Add a red text color and an "x" when the requirements are wrong */
-.invalid {
-    color:  #cc0000;
-    font-weight: bold;
-}
-.valid:before{
-	content: "\2713";
-	color: #006400;
-    font-weight: normal;
-    text-decoration: none;
-}
+
+
 #message:after {
    content: "";
     position: absolute;
@@ -252,4 +237,30 @@ input[type=submit] {
 	margin: 20px 0px;
 	width:100%;
 	height:30px;
+}
+#symbol {
+	margin-top:5px;
+}
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: #006400;
+    text-decoration: line-through;
+    font-weight: normal;
+}
+
+#formTitle
+{
+	position:center;
+	
+}
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color:  #cc0000;
+    font-weight: bold;
+}
+.valid:before{
+	content: "\2713";
+	color: #006400;
+    font-weight: normal;
+    text-decoration: none;
 }
