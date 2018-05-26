@@ -70,6 +70,8 @@
 		<div class = "row">
 			<div class = "col-label"><label for="password">New Password:</label> </div>
 			<div class = "col-input"><input type="password" name="password" id="password"required>
+			<br><br>
+			<input type="checkbox" onclick="myFunction()">Show Password
 				<div id="message">
 					<p>Password requirement:</p>
 	  				<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -174,6 +176,15 @@
     length.classList.add("invalid");
   }
 }
+	
+	function myFunction() {
+	    var x = document.getElementById("password");
+	    if (x.type === "password") {
+	        x.type = "text";
+	    } else {
+	        x.type = "password";
+	    }
+	}
 	</script>
 </body>
 </html>

@@ -212,6 +212,26 @@ input[type=submit] {
     font-weight: bold;
 }
 
+#formTitle
+{
+	position:center;
+	
+}
+
+#message:after {
+   content: "";
+    position: absolute;
+    top: 10px;
+    right: 45%;
+    margin-top: -30px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent grey transparent;
+}
+
+#symbol {
+	margin-top:5px;
+}
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
     color: #006400;
@@ -234,18 +254,4 @@ input[type=submit] {
 	color: #006400;
     font-weight: normal;
     text-decoration: none;
-}
-#message:after {
-   content: "";
-    position: absolute;
-    top: 10px;
-    right: 45%;
-    margin-top: -30px;
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent transparent grey transparent;
-}
-
-#symbol {
-	margin-top:5px;
 }

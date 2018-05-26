@@ -67,6 +67,8 @@
 		<div class = "row">
 			<div class = "col-label"><label for="password">Password:</label> </div>
 			<div class = "col-input"><input type="password" name="password" id="password"required>
+			<br><br>
+			<input type="checkbox" onclick="myFunction()">Show Password
 				<div id="message">
 					<p>Password requirement:</p>
 	  				<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -78,8 +80,14 @@
 			</div>
 
 		</div>
+		
+		<div class = "row">
+			<div class = "col-label"><label for="password">Confirm New Password:</label> </div>
+			<div class = "col-input"><input type="password" name="confirm_password" id="confirm_password"required><img id="symbol" src="<%=request.getContextPath()%>/images/tickmark.png" alt="Tick mark" width="30" height="20">
+			</div>
 
-
+			</div>
+			
 		<div class = "row">
 			<div class = "col-label"><label for="question1">Security Question 1:</label> </div>
 				<div class = "col-input">
@@ -137,6 +145,24 @@ var length = document.getElementById("length");
 var question1 = document.getElementById("question1");
 var question2 = document.getElementById("question2");
 var previousSelectIndex =0;//keep track of the previous selection
+var confirm = document.getElementById("confirm_password");
+
+confirm.onkeyup = function() {
+	//Check if the confirm password match with the first one
+	if(confirm.value.localeCompare(myInput.value)==0)
+		{
+			document.getElementById("symbol").src = "<%=request.getContextPath()%>/images/tickmark.png";
+			document.getElementById("submit").disabled= false;
+
+		}
+	else
+		{
+			document.getElementById("symbol").src = "<%=request.getContextPath()%>/images/xicon.png";
+			document.getElementById("submit").disabled= true;
+
+		}
+
+}
 
 //disable the user selection so that user cannot choose 1 question for both security questions
 question1.onchange = function()
@@ -203,6 +229,14 @@ length.classList.add("invalid");
 }
 }
 
+function myFunction() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
 
 </script>	
 	

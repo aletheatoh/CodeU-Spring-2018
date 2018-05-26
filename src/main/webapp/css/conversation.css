@@ -145,8 +145,8 @@ a {
 }
 
 #formTitle{
-	text-align:center;
 	text-color:#cc0000;
+	font-weight:800;
 }
 #container {
   border-radius: 5px;
@@ -160,7 +160,7 @@ a {
 
 h1 {
   color: #757575;
-  font-weight:bold;
+  font-weight:800;
 }
 
 button {

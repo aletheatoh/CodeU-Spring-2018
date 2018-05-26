@@ -21,61 +21,78 @@
 </head>
 <body>
 
-  <nav>
-    <a id="navTitle" href="/">CodeU Chat App</a>
-    <a href="/conversations">Conversations</a>
-    <% if(request.getSession().getAttribute("user") != null){ %>
-      <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
-      <a href="/logout">Log Out</a>
-    <% } else{ %>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-    <% } %>
-    <a href="/about.jsp">About</a>
-    <a href="/admin">Admin</a>
-  </nav>
+  <div class="nav">
+<div class="button-container-3">
+ <span class="mas">Home</span>
+	<a id="navTitle" href="/"><button type="button" name="Hover">Home</button></a>
+</div>
 
+<% if(request.getSession().getAttribute("user") != null){ %>
+		<div class="button-container-3">
+ 			<span class="mas"><%= request.getSession().getAttribute("user") %></span>
+			<a  href="/user"><button type="button" name="Hover"><%= request.getSession().getAttribute("user") %></button></a>
+		</div>
+   
+		<div class="button-container-3">
+ 			<span class="mas">Log Out</span>
+			<a  href="/logout"><button type="button" name="Hover">Log Out</button></a>
+		</div>
+		
+		<div class="button-container-3">
+				 <span class="mas">Conversation</span>
+				<a href ="/conversation"><button type="button" name="Hover">Conversation</button></a>
+		</div>
+		
+<% } else{ %>
+		<div class="button-container-3">
+ 			<span class="mas">Register</span>
+			<a href="/register"><button type="button" name="Hover">Register</button></a>
+		</div>
+		
+		<div class="button-container-3">
+ 			<span class="mas">Login</span>
+			<a  href="/login"><button type="button" name="Hover">Login</button></a>
+		</div>
+			
+	
+	 <% } %>
+
+<div class="button-container-3">
+ <span class="mas">About</span>
+	<a href="/about.jsp"><button type="button" name="Hover">About</button></a>
+</div>
+
+</div>
+ 
+  
   <div id="container">
-    <div
-      style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
-	<h1>This is the web chat app developed by Team 9: </h1>
+    
+	<h1>"Always be yourself, unless you can be Team 9, then be Team 9"</h1>
 	<ul>
-		<li>Henry (Advisor)</li>
-		<li>Liz</li>
+    <div id="Henry" class="member">	
+    <h3>Henry (Advisor)</h1> 	
+    <li><img src="<%=request.getContextPath()%>/images/playing-piano-in-a-band.jpg" alt="The Pulpit Rock" width="300" height="200"></li>
+    <li></br>  Keeping his day job for now. <i>Carnegie Hall will have to wait.</i></li>
+    </div>
+    <div id="Liz" class="member">
+    <h3>Liz Dao</h3> </br> 		
+     <li><img src="<%=request.getContextPath()%>/images/f2c3dc6428c07ff998fc512f94484539.jpg" alt="donut bulldog" width="300" height="200"></li>
+    <li>CS sophomore, Vietnamese, runs on donuts, black coffee, and Netflix</li>
+     
+    </div>
 		<li>Sergio</li>
 		<li>Alethea</li>
 		<li>Erin</li>
-
+</br>
+	<h3>As you can see, this web chat is superhero themed</h3>
+	<h3>Some of the amazing features we developed:</h3>
+	<ul>
+		<li>Registration
+		<li>Security and Account Recover Option
+		<li>Admin and Statistic feature
+		<li>Profile (bio, avatar, etc.)	
 	</ul>
-      <h1>About the CodeU Chat App</h1>
-      <p>
-        This is an example chat application designed to be a starting point
-        for your CodeU project team work. Here's some stuff to think about:
-      </p>
-
-      <ul>
-        <li><strong>Algorithms and data structures:</strong> We've made the app
-            and the code as simple as possible. You will have to extend the
-            existing data structures to support your enhancements to the app,
-            and also make changes for performance and scalability as your app
-            increases in complexity.</li>
-        <li><strong>Look and feel:</strong> The focus of CodeU is on the Java
-          side of things, but if you're particularly interested you might use
-          HTML, CSS, and JavaScript to make the chat app prettier.</li>
-        <li><strong>Customization:</strong> Think about a group you care about.
-          What needs do they have? How could you help? Think about technical
-          requirements, privacy concerns, and accessibility and
-          internationalization.</li>
-      </ul>
-
-      <p>
-        This is your code now. Get familiar with it and get comfortable
-        working with your team to plan and make changes. Start by updating the
-        homepage and this about page to tell your users more about your team.
-        This page should also be used to describe the features and improvements
-        you've added.
-      </p>
-    </div>
+	<a href="https://docs.google.com/document/d/1iDMfiYjOTJYbCzZS_uglQFQeGxbEsiaT2qB1eQMsFL8/edit?ts=5af5bf4a#">>>>Click here to read the Design Doc of the this web chat!</a>
   </div>
 </body>
 </html>
